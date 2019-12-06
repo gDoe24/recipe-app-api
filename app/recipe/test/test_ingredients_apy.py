@@ -5,7 +5,7 @@ from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIClient
 
-from core.models import Ingredient
+from core.models import Ingredient, Recipe
 
 from recipe.serializers import IngredientSerializer
 
@@ -83,3 +83,41 @@ class PrivateIngredientsApiTests(TestCase):
 		res = self.client.post(INGREDIENTS_URL, payload)
 
 		self.assertEqual(res.status_code, status.HTTP_400_BAD_REQUEST)
+
+	def test_filter_ingredients_assigned_to_recipes(self):
+		#Test ingredient retrieved matches recipe ingredient
+		ingredient1 = Ingredient.objects.create(user=self.user, name="Chicken")
+		ingredient2 = Ingredient.objects.create(user=self.user, name="Beef")
+		recipe = Recipe.objects.create(title="Chicken Pot Pie",
+			time=30,
+			price=5,
+			user=self.user)
+		recipe.ingredients.add(ingredient1)
+		serializer1 = IngredientSerializer(ingredient1)
+		serializer2 = IngredientSerializer(ingredient2)
+
+		res = self.client.get(INGREDIENTS_URL, {'assigned_only': 1})
+		self.assertIn(serializer1.data, res.data)
+		self.assertNotIn(serializer2.data, res.data)
+
+	def test_ingredients_retrieved_assigned_unique(self):
+		#Test that unique ingredients are returned rather than one ingredient for one recipe
+		ingredient1 = Ingredient.objects.create(user=self.user, name="Chicken")
+		Ingredient.objects.create(user=self.user, name="Lime")
+		recipe1= Recipe.objects.create(
+			title="Chicken Fetuccini",
+			time=45,
+			price=5,
+			user=self.user)
+		recipe2 = Recipe.objects.create(
+			title="Chicken Curry",
+			time=45,
+			price=5,
+			user=self.user)
+		recipe1.ingredients.add(ingredient1)
+		recipe2.ingredients.add(ingredient1)
+
+		res = self.client.get(INGREDIENTS_URL, {'assigned_only':1})
+
+		self.assertEqual(len(res.data),1)
+
