@@ -1,6 +1,9 @@
 from rest_framework import generics, authentication, permissions
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
+from core.models import Recipe, Tag
+
+from django.core.paginator import Paginator
 
 from django.shortcuts import render, get_object_or_404
 
@@ -27,5 +30,6 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
 		return self.request.user
 
 def home(request):
-
-	return render(request, 'user/home.html')
+	tag = Tag.objects
+	recipe = Recipe.objects
+	return render(request, 'user/home.html', {'recipes':recipe})

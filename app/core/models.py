@@ -75,7 +75,8 @@ class Recipe(models.Model):
 	#Recipe object
 	user = models.ForeignKey(
 		settings.AUTH_USER_MODEL,
-		on_delete=models.CASCADE
+		on_delete=models.CASCADE,
+		null=True,
 		)
 	title = models.CharField(max_length=255)
 	time = models.IntegerField()
@@ -83,6 +84,7 @@ class Recipe(models.Model):
 	link = models.URLField(max_length=200, blank=True)
 	ingredients = models.ManyToManyField('Ingredient')
 	tags = models.ManyToManyField('Tag')
+	description = models.TextField(null=True,max_length=255)
 	image = models.ImageField(null=True, upload_to=recipe_image_file_path)
 
 	def __str__(self):

@@ -9,6 +9,7 @@ from core.models import Tag, Ingredient, Recipe
 
 from recipe import serializers
 
+from django.shortcuts import render, get_object_or_404
 
 class BaseRecipeAttrViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin, mixins.ListModelMixin):
 	#Base viewset for user owned attributes
@@ -47,7 +48,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
 	serializer_class = serializers.RecipeSerializer
 	queryset = Recipe.objects.all()
 
-	authentication_class = (TokenAuthentication,)
+	authentication_classes = (TokenAuthentication,)
 	permission_classes = (IsAuthenticated,)
 
 	def _params_to_ints(self, qs):
@@ -99,4 +100,13 @@ class RecipeViewSet(viewsets.ModelViewSet):
 			serializer.errors,
 			status=status.HTTP_400_BAD_REQUEST
 		)
+
+def detail(request,recipe_id):
+	recipe = get_object_or_404(Recipe, pk=recipe_id)
+	return render(request, 'recipe/detail.html', {'recipe':recipe})
+
+def all_recipes(request):
+	recipe=Recipe.objects
+	tag=Tag.objects
+	return render(request, 'recipe/all_recipes.html',{'recipes':recipe, 'tags':tag})
 

@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-import user.views
+import user.views, recipe.views
 
 
 urlpatterns = [
@@ -25,4 +25,6 @@ urlpatterns = [
     path('api/user/', include('user.urls')),
     path('api/recipe/', include('recipe.urls')),
     path('', user.views.home, name='home'),
+    path('all_recipes/', recipe.views.all_recipes, name="all_recipes"),
+    path('all_recipes/<int:recipe_id>/', recipe.views.detail, name='detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
