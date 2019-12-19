@@ -11,6 +11,9 @@ from recipe import serializers
 
 from django.shortcuts import render, get_object_or_404
 
+from django.core.paginator import Paginator
+
+
 class BaseRecipeAttrViewSet(viewsets.GenericViewSet, mixins.CreateModelMixin, mixins.ListModelMixin):
 	#Base viewset for user owned attributes
 	authentication_classes = (TokenAuthentication,)
@@ -106,7 +109,12 @@ def detail(request,recipe_id):
 	return render(request, 'recipe/detail.html', {'recipe':recipe})
 
 def all_recipes(request):
-	recipe=Recipe.objects
+	recipe=Recipe.objects.all()
 	tag=Tag.objects
+
+	paginator = Paginator(recipe, 3)
+	page = request.GET.get('page',1)
+	recipe = paginator.get_page(page)
+
 	return render(request, 'recipe/all_recipes.html',{'recipes':recipe, 'tags':tag})
 

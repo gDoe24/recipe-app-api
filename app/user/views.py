@@ -31,5 +31,10 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
 
 def home(request):
 	tag = Tag.objects
-	recipe = Recipe.objects
+	recipe_list = Recipe.objects.all().order_by('-creation_date')
+
+	paginator = Paginator(recipe_list, 3)
+	page = request.GET.get('page')
+	recipe = paginator.page(1)
+
 	return render(request, 'user/home.html', {'recipes':recipe})

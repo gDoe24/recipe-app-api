@@ -73,6 +73,10 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
 	#Recipe object
+	creation_date = models.DateTimeField(auto_now_add= True)
+	class Meta:
+		get_latest_by = 'creation_date'
+
 	user = models.ForeignKey(
 		settings.AUTH_USER_MODEL,
 		on_delete=models.CASCADE,
