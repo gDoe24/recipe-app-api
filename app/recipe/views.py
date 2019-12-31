@@ -106,15 +106,18 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
 def detail(request,recipe_id):
 	recipe = get_object_or_404(Recipe, pk=recipe_id)
-	return render(request, 'recipe/detail.html', {'recipe':recipe})
+	tag=Tag.objects.all()
+	ingredient=Ingredient.objects.all()
+	return render(request, 'recipe/detail.html', {'recipe':recipe, 'tags':tag, 'ingredients':ingredient})
 
 def all_recipes(request):
-	recipe=Recipe.objects.all()
-	tag=Tag.objects
+	recipe_list=Recipe.objects.all()
+	tag=Tag.objects.all()
+	ingredient=Ingredient.objects.all()
 
-	paginator = Paginator(recipe, 3)
-	page = request.GET.get('page',1)
+	paginator = Paginator(recipe_list, 1)
+	page = request.GET.get('page',2)
 	recipe = paginator.get_page(page)
 
-	return render(request, 'recipe/all_recipes.html',{'recipes':recipe, 'tags':tag})
+	return render(request, 'recipe/all_recipes.html',{'recipes':recipe, 'tags':tag, 'ingredients':ingredient})
 
