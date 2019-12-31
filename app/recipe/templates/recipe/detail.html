@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="author" content="Greg">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>Blog Template · Bootstrap</title>
+    <title>Recipe Detail</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/blog/">
 
@@ -70,11 +70,6 @@
 		
 	}
 	table{
-		display:block;
-		height:300px;
-		border-collapse: collapse; 
-		white-space: nowrap;
-		overflow-y:scroll;
 	}
 	td,th{
 		font-size: .9rem;
@@ -87,13 +82,24 @@
 	tr{
 		border-bottom: 1px dashed black;
 	}
-	tr:nth-child(even){
-		background-color:#f2f2f2; 
+	.my-custom-scrollbar {
+		position:relative;
+		height: 300px;
+		overflow: auto;
+		display: block;
 	}
-	tr:hover{
-		background-color: #DCDCDC;
+	@media screen and (max-width:768px){
+		.my-custom-scrollbar {
+		position:relative;
+		height: 300px;
+		overflow: auto;
+		display: block;
+		clear:left;
+		padding-top: 20px;
+		}
 	}
-    </style>
+
+	    </style>
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -134,13 +140,13 @@
 <h3 class="pb-4 mb-4 font-italic border-bottom"style="padding-top: 5%">
         {{recipe.title}}
 </h3>
-<div class="container">
+<div id="main" class="container">
 	<div class="container" style="float:left;clear:right;height:297px;width:450px">
  		<img id="featured" src="{{recipe.image.url}}"style="height: 100%;width: 100%;"/>
  		
 	</div>
-	<div class="table-wrapper-scroll-y">
-		<table class ="" style="">
+	<div class="my-custom-scrollbar">
+		<table class ="table mb-0" style="">
 			<thead class="thead">
 				<tr scope="row">
 					<th>Ingredients</th>
@@ -162,7 +168,7 @@
     <div class="col-md-8 blog-main">
  
       <div class="blog-post">
-        <h2 class="blog-post-title">Sample blog post</h2>
+        <h2 class="blog-post-title">Methods</h2>
         <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
 
         <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>

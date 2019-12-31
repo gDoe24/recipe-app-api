@@ -75,7 +75,7 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
 	#Recipe object
-	creation_date = models.DateTimeField(auto_now_add= True)
+	creation_date = models.DateTimeField(auto_now_add=True)
 	class Meta:
 		get_latest_by = 'creation_date'
 
@@ -91,7 +91,7 @@ class Recipe(models.Model):
 	link = models.URLField(max_length=200, blank=True)
 	ingredients = models.ManyToManyField('Ingredient')
 	tags = models.ManyToManyField('Tag')
-	description = models.TextField(null=True,max_length=255)
+	description = models.TextField(null=True)
 	image = models.ImageField(null=True, upload_to=recipe_image_file_path)
 
 	def __str__(self):
