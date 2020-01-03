@@ -73,6 +73,7 @@ class Ingredient(models.Model):
 
 		return self.name
 
+
 class Recipe(models.Model):
 	#Recipe object
 	creation_date = models.DateTimeField(auto_now_add=True)
@@ -92,6 +93,7 @@ class Recipe(models.Model):
 	ingredients = models.ManyToManyField('Ingredient')
 	tags = models.ManyToManyField('Tag')
 	description = models.TextField(null=True)
+	methods = models.TextField(default="Step 1: x")
 	image = models.ImageField(null=True, upload_to=recipe_image_file_path)
 
 	def __str__(self):
