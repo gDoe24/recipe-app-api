@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./app/frontend/src/index.js --output ./app/frontend/static/frontend/main.js",
-    "build": "webpack --mode production ./recipe-app-api/app/frontend/src/index.js --output ./recipe-app-api/app/static/frontend/main.js"
+    "dev": "webpack --mode development --watch ./app/frontend/src/index.js --output ./app/frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./app/frontend/src/index.js --output ./app/static/frontend/main.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,10 @@
   "dependencies": {
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-redux": "^7.1.3",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0"
   }
 }

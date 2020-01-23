@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 
 class App extends Component {
 	render(){
-		return <h1>React App</h1>
+		return <h1>Yeah ok</h1>
 	}
 }
 
-var ReactDOM = require('react-dom');
-React.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
