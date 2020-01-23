@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.conf import settings
-import user.views, recipe.views
+import user.views, recipe.views, frontend.views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
@@ -28,10 +28,12 @@ urlpatterns = [
     path('api/recipe/', include('recipe.urls')),
     path('api/token',TokenObtainPairView.as_view()),
     path('api/token/refresh',TokenRefreshView.as_view()),
+    path('user/', include('user.urls')),
     path('', user.views.home, name='home'),
     path('all_recipes/', recipe.views.all_recipes, name="all_recipes"),
     path('all_recipes/<int:recipe_id>/', recipe.views.detail, name='detail'),
     path('create_recipe/', recipe.views.create_recipe, name="create_recipe"),
     path('create_user/', user.views.CreateUser.create_user, name="create_user"),
     path('add_ingredients/',user.views.AddIngredientView.as_view(),name="add_ingredients"),
+    path('index/',frontend.views.index, name="index"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

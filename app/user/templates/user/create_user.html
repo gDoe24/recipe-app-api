@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+{% load staticfiles %}
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link href="{%static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="{%static 'css/shop-homepage.css' %}" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+  <body>
+{%block content%}
+<div class='container'>
+	<h3>Ingredient</h3>
+	<ul>
+		<li>Milk</li>
+	</ul>
+	<button class="btn get-more">Get More</button>
+	{% csrf_token %}
+	<div>
+		<input class="add-item" type="text" placeholder="ingredient">
+	</div>
+	<button class='btn add-ing'>Add Ingredient</button>
+</div>
+
+{%endblock%}
+<script src="{%static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{%static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script>
+	$(document).ready(function(){
+		//AJAX GET
+		$('.get-more').click(function(){
+
+
+		$.ajax({
+			type:'GET',
+			url: 'more_ingredients',
+			success: function(data){
+				for (i=0;i<data.length;i++){
+					$('ul').append('<li>'+data[i]+'</li>');
+				}
+			}
+		})
+		})
+		//AJAX POST
+		$('.add-ing').click(function(){
+			$.ajax({
+				type:'POST',
+				url: 'add_ingredient',
+				dataType: 'json',
+				data: {"item":$('.add-item').val()},
+				success: function(data){
+					more_ingredients.append(data);
+				}
+			})
+		})
+
+		//CSRF code
+		function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+	})
+</script>
+</body>

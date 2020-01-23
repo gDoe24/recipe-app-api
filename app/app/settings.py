@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'core',
     'user',
     'recipe',
+    'frontend',
 ]
 
 MIDDLEWARE = [
@@ -142,7 +143,7 @@ JWT_AUTH = {
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'core/static/')
+    os.path.join(BASE_DIR, 'frontend/static/')
 ]
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
