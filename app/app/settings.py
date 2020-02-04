@@ -94,7 +94,7 @@ DATABASES = {
         'HOST': os.environ.get('DB_HOST'),
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
-        'PASSWORD':os.environ.get('DB_PASS'),
+        'PASSWORD': os.environ.get('DB_PASS'),
     }
 }
 
@@ -142,9 +142,9 @@ REST_FRAMEWORK = {
     ),
 }
 
-#JSON Web Token authorization
+# JSON Web Token authorization
 JWT_AUTH = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER':'app.utils.my_jwt_response_handler'
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'app.utils.my_jwt_response_handler'
 }
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
