@@ -52,7 +52,6 @@ class PublicRecipeApiTests(TestCase):
 	def test_required_auth(self):
         #Test the authenticaiton is required
 		res = self.client.get(RECIPES_URL)
-
 		self.assertEqual(res.status_code, status.HTTP_403_FORBIDDEN)
 
 class PrivateRecipeApiTests(TestCase):

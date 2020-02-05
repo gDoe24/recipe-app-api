@@ -54,11 +54,6 @@ def home(request):
 
 	return render(request, 'user/home.html', {'recipes':recipe})
 
-class CreateUser(TemplateView):
-
-	def create_user(request):
-		return render(request, 'user/create_user.html')
-
 
 class AddIngredientView(TemplateView):
 	template_name= "user/add_ingredients.html"

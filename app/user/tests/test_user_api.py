@@ -24,7 +24,7 @@ class PublicUserApiTests(TestCase):
 
 		payload={
 		'email':'test@londonappdev.com',
-		'password':'test1234',
+		'password':'test12345',
 		'name':'name',
 		}
 		res=self.client.post(CREATE_USER_URL,payload)
@@ -39,7 +39,7 @@ class PublicUserApiTests(TestCase):
 	def test_duplicate_user(self):
 		#test creating a user that already exists fails
 		payload={
-		'email':'test@londonappdev.com',
+		'email':'gregkeel11@gmail.com',
 		'password':'test1234',
 		}
 		create_user(**payload)
