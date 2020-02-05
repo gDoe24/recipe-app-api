@@ -25,7 +25,13 @@ SECRET_KEY = '2hxb@=frl^_!8#g*7v(m$f@zau5h7)gsh!isf_b#zkuwgm_27q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: update this before going into production!
+ALLOWED_HOSTS = [
+    '0.0.0.0',
+    'localhost',
+    '127.0.0.1',
+    '[::1]',
+]
 
 
 # Application definition
@@ -37,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',
@@ -87,7 +94,7 @@ DATABASES = {
         'HOST': os.environ.get('DB_HOST'),
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('DB_USER'),
-        'PASSWORD':os.environ.get('DB_PASS'),
+        'PASSWORD': os.environ.get('DB_PASS'),
     }
 }
 
@@ -135,9 +142,9 @@ REST_FRAMEWORK = {
     ),
 }
 
-#JSON Web Token authorization
+# JSON Web Token authorization
 JWT_AUTH = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER':'app.utils.my_jwt_response_handler'
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'app.utils.my_jwt_response_handler'
 }
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
