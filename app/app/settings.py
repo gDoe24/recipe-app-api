@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',
@@ -142,13 +141,10 @@ REST_FRAMEWORK = {
     ),
 }
 
-<<<<<<< HEAD
-=======
 # JSON Web Token authorization
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'app.utils.my_jwt_response_handler'
 }
->>>>>>> 5f755a79503b9873d0ede68cf533e95cd4cf8692
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
