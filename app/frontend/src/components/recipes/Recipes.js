@@ -1,18 +1,18 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getRecipes, deleteRecipe, getIngredients } from "../../actions/recipes.js";
+import { getRecipes, deleteRecipe } from "../../actions/recipes.js";
+import Ingredients from "./Ingredients";
+import IngredientForm from "./IngredientForm"
 
 export class Recipes extends Component {
 	static propTypes = {
 		recipes: PropTypes.array.isRequired,
-		deleteRecipe: PropTypes.func.isRequired,
-		ingredients: PropTypes.array.isRequired
+		deleteRecipe: PropTypes.func.isRequired
 	}
 
 	componentDidMount(){
-		this.props.getRecipes(),
-		this.props.getIngredients()
+		this.props.getRecipes();
 	}
 	render() {
 		return (
@@ -37,38 +37,21 @@ export class Recipes extends Component {
 							<td>{recipe.time}</td>
 							<td>{recipe.servings}</td>
 							<td>{recipe.price}</td>
-							<td><button onClick={this.props.deleteRecipe.bind(this,recipe.id)}className="btn btn-danger btn-sm">Delete</button></td>
+							<td><button onClick={this.props.deleteRecipe.bind(this,recipe.id)} 
+							className="btn btn-danger btn-sm">Delete</button></td>
 						</tr>
 						)
 					)}
 				</tbody>
 				</table>
-				<table className="table table-striped">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Unit</th>
-						<th />
-					</tr>
-				</thead>
-				<tbody>
-					{ this.props.recipes.map(ingredient =>(
-							<tr key={ingredient.id}>
-							<td>{ingredient.id}</td>
-							<td>{ingredient.name}</td>
-							<td>{ingredient.unit}</td>
-						</tr>
-						)
-					)}
-				</tbody>
-				</table>
+				<Ingredients />
+				<IngredientForm />
 			</Fragment>
 		)
 	}
 }
 
 const mapStateToProps = state => ({
-	recipes: state.recipes.recipes,
+	recipes: state.recipes.recipes
 });
-export default connect(mapStateToProps, { getRecipes, deleteRecipe, getIngredients })(Recipes);
+export default connect(mapStateToProps, { getRecipes, deleteRecipe })(Recipes);

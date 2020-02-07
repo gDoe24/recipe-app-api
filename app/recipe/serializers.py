@@ -13,7 +13,7 @@ class IngredientSerializer(serializers.ModelSerializer):
 		#Serializer for ingredients
 	class Meta:
 		model = Ingredient
-		fields = ('id', 'name')
+		fields = ('id', 'name','unit','amount')
 		read_only_fields = ('id',)
 
 

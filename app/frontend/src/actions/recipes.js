@@ -1,6 +1,6 @@
  import axios from 'axios';
 
- import { GET_RECIPES, DELETE_RECIPE, ADD_RECIPE, GET_INGREDIENTS } from './types';
+ import { GET_RECIPES, DELETE_RECIPE, ADD_RECIPE, GET_INGREDIENTS, ADD_INGREDIENT } from './types';
 
 //action method
  export const getRecipes = () => (dispatch) =>{
@@ -41,6 +41,16 @@
 		.then(res => {
 			dispatch({
 				type: GET_INGREDIENTS,
+				payload: res.data
+			});
+		}).catch(err => console.log(err));
+ };
+
+ export const addIngredient = (ingredient) => dispatch =>{
+	axios.post('/api/recipe/ingredients/', ingredient)
+		.then(res => {
+			dispatch({
+				type: ADD_INGREDIENT,
 				payload: res.data
 			});
 		}).catch(err => console.log(err));

@@ -1,4 +1,4 @@
-import { GET_RECIPES, DELETE_RECIPE, ADD_RECIPE, GET_INGREDIENTS } from '../actions/types.js';
+import { GET_RECIPES, DELETE_RECIPE, ADD_RECIPE, GET_INGREDIENTS, ADD_INGREDIENT } from '../actions/types.js';
 
 const initialState = {
 	recipes: ['Kobe'],
@@ -9,6 +9,7 @@ export default function(state=initialState, action){
 	switch(action.type){
 		case GET_RECIPES:
 			return {
+				...state,
 				recipes: action.payload
 			}
 			
@@ -26,7 +27,13 @@ export default function(state=initialState, action){
 			return state;
 		case GET_INGREDIENTS:
 			return {
+				...state,
 				ingredients: action.payload
+			}
+		case ADD_INGREDIENT:
+			return {
+				...state,
+				ingredients: [...state.ingredients, action.payload]
 			}
 	}
 }
