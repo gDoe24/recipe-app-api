@@ -1,11 +1,15 @@
 FROM python:3.7-alpine
 MAINTAINER greg
 
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONPATH="C:\\Users\\425823\\Django_projects\\myvenv\\Scripts\\python37.zip"
 
 COPY ./requirements.txt /requirements.txt
-RUN apk add --update --no-cache postgresql-client jpeg-dev && \
+
+
+RUN pip install --upgrade pip && \
+	apk add --update --no-cache postgresql-client jpeg-dev && \
     apk add --update --no-cache --virtual .tmp-build-deps gcc libc-dev linux-headers postgresql-dev musl-dev zlib zlib-dev && \
+    apk add gcc musl-dev python3-dev libffi-dev openssl-dev && \
     pip install -r /requirements.txt && \
     apk del .tmp-build-deps
 
@@ -18,4 +22,4 @@ RUN mkdir -p /vol/web/static
 RUN adduser -D user
 RUN chown -R user:user /vol/
 RUN chmod -R 755 /vol/web
-USER user
+USER root

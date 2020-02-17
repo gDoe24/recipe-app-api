@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model, authenticate
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
-from rest_framework_simplejwt.settings import api_settings
+
 
 class UserSerializer(serializers.ModelSerializer):
     
@@ -13,7 +13,8 @@ class UserSerializer(serializers.ModelSerializer):
 		extra_kwargs = {'password': {'write_only': True, 'min_length': 7}}
 
 	def create(self, validated_data):
-		return get_user_model().objects.create_user(**validated_data)
+		user = get_user_model().objects.create_user(**validated_data)
+		return user
 
 	def update(self, instance, validated_data):
 		#Update a user name and password successfully and return it
@@ -51,3 +52,15 @@ class AuthTokenSerializer(serializers.Serializer):
 
 		attrs['user'] = user
 		return attrs
+
+#Login Serializer
+
+class LoginSerializer(serializers.Serializer):
+	username = serializers.CharField()
+	password = serializers.CharField()
+
+	def validate(self, data):
+		user = authenticate(**data)
+		if user and user.is_active:
+			return user
+		raise serializers.ValidationError("Incorrect Credentials")
