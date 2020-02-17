@@ -29,17 +29,6 @@ class CreateTokenView(ObtainAuthToken):
 	serializer_class= AuthTokenSerializer
 	renderer_classes= api_settings.DEFAULT_RENDERER_CLASSES
 
-	def post(self, request, *args, **kwargs):
-		serializer = self.get_serializer(data=request.data)
-		serializer.is_valid(raise_exception=True)
-		user = serializer.validated_data
-
-		return Response({
-			"user": UserSerializer(user,
-			context = self.get_serializer_context()).data,
-			"token": self.request.user
-			})
-
 class ManageUserView(generics.RetrieveUpdateAPIView):
 	#View to manage the authenticated user
 
@@ -50,7 +39,6 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
 	def get_object(self):
 		#retrieve and return the authenticated user
 		return self.request.user
-
 #Login API
 class LoginAPI(generics.GenericAPIView):
 
@@ -66,7 +54,7 @@ class LoginAPI(generics.GenericAPIView):
 		return Response({
 			"user": UserSerializer(user,
 			context = self.get_serializer_context()).data,
-			"token": self.request.user
+			"token": AuthToken.objects.create(user)
 			})
 
 #Logout API
