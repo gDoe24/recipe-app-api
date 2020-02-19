@@ -16,6 +16,7 @@ from user.serializers import UserSerializer, AuthTokenSerializer, LoginSerialize
 
 from django.contrib.auth import logout as django_logout
 import json
+
 from django.http import Http404, HttpResponse
 
 from user.forms import AddIngredientForm
@@ -39,6 +40,25 @@ class ManageUserView(generics.RetrieveUpdateAPIView):
 	def get_object(self):
 		#retrieve and return the authenticated user
 		return self.request.user
+
+#Logout API
+class LogoutView(APIView):
+	authentication_classes = (authentication.TokenAuthentication,)
+
+	def post(self, request):
+		return self.logout(request)
+
+	def logout(self, request):
+		try:
+			request.user.auth_token.delete()
+		except (AttributeError, ObjectDoesNotExist):
+			pass
+
+			logout(request)
+
+			return Response({"success": _("Successfully logged out.")},
+							status=status.HTTP_200_OK)
+	
 #Login API
 class LoginAPI(generics.GenericAPIView):
 
@@ -56,14 +76,6 @@ class LoginAPI(generics.GenericAPIView):
 			context = self.get_serializer_context()).data,
 			"token": AuthToken.objects.create(user)
 			})
-
-#Logout API
-class LogoutView(APIView):
-	authntication_classes = (authentication.TokenAuthentication,)
-
-	def post(self, request):
-		django_logout(request)
-		return Response(status=204)
 
 def home(request):
 	tag = Tag.objects

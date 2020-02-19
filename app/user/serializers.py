@@ -13,8 +13,7 @@ class UserSerializer(serializers.ModelSerializer):
 		extra_kwargs = {'password': {'write_only': True, 'min_length': 7}}
 
 	def create(self, validated_data):
-		user = get_user_model().objects.create_user(**validated_data)
-		return user
+		return get_user_model().objects.create_user(**validated_data)
 
 	def update(self, instance, validated_data):
 		#Update a user name and password successfully and return it
@@ -26,7 +25,6 @@ class UserSerializer(serializers.ModelSerializer):
 			user.save()
 
 		return user
-
 
 class AuthTokenSerializer(serializers.Serializer):
 	#Serializer for user authentication
@@ -56,7 +54,7 @@ class AuthTokenSerializer(serializers.Serializer):
 #Login Serializer
 
 class LoginSerializer(serializers.Serializer):
-	username = serializers.CharField()
+	email = serializers.CharField()
 	password = serializers.CharField()
 
 	def validate(self, data):
