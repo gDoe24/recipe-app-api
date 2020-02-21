@@ -1,7 +1,7 @@
 from django.urls import path, include
 
 from user import views
-from knox import views as knox_views
+#from knox import views as knox_views
 
 app_name='user'
 
@@ -10,5 +10,5 @@ urlpatterns = [
 	path('token/', views.CreateTokenView.as_view(), name="token"),
 	path('me/', views.ManageUserView.as_view(), name='me'),
 	path('logout/', views.LogoutView.as_view(), name="logout"),
-	path('login/', include('knox.urls')),
+	#path('login/', include('knox.urls')),
 ]

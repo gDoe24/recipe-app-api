@@ -8,8 +8,6 @@ from core.models import Recipe, Tag
 from django.views.generic import TemplateView
 from django.core.paginator import Paginator
 
-from knox.models import AuthToken
-
 from django.shortcuts import render, get_object_or_404, redirect
 
 from user.serializers import UserSerializer, AuthTokenSerializer, LoginSerializer
@@ -24,6 +22,9 @@ from user.forms import AddIngredientForm
 class CreateUserView(generics.CreateAPIView):
 	#Create a new user
 	serializer_class=UserSerializer
+	authentication_classes = []
+	permission_classes = []
+
 
 class CreateTokenView(ObtainAuthToken):
 	#authenticate user
