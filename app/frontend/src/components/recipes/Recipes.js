@@ -44,7 +44,6 @@ export class Recipes extends Component {
 					)}
 				</tbody>
 				</table>
-				<Ingredients />
 				<IngredientForm />
 			</Fragment>
 		)

@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getIngredients } from "../../actions/recipes.js";
 
-export class Ingredients extends Component{
 
+export class Ingredients extends Component{
 	static propType = {
 		ingredients: PropTypes.array.isRequired,
 	}
@@ -12,37 +12,37 @@ export class Ingredients extends Component{
 	componentDidMount(){
 		ingredients: this.props.getIngredients();
 	}
+	
+	addData = (e) => {
+		/*console.log(e.target.value)*/
+		this.props.list.push(e.target.value);
+		var newList=this.props.list;
+		this.setState({list: newList})
+	}	
+	
 	render(){
+		
 		return(
 			<Fragment>
-				<h2>Ingredients</h2>
-				<table className="table table-striped">
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Name</th>
-							<th>Amount</th>
-							<th>Unit</th>
-						</tr>
-					</thead>
+				<label>Ingredients</label>
+				<div className="my-custom-scrollbar">
+				<table className ="table mb-0" style={{width: 150 + 'px', text_align: 'left'}}>
 					<tbody>
 						{ this.props.ingredients.map(ingredient =>(
 							<tr key={ingredient.id}>
-							<td>{ingredient.id}</td>
-							<td>{ingredient.name}</td>
-							<td>{ingredient.amount}</td>
-							<td>{ingredient.unit}</td>
+							<td><button className="btn ing-list" onClick={this.addData} value={ingredient.name}
+							>{ingredient.name}</button></td>
 						</tr>
 						)
 					)}
 					</tbody>
 				</table>
+				</div>
 			</Fragment>
 		)
 	}
 }
 		
-
 const mapStateToProps = state => ({
 	ingredients: state.recipes.ingredients
 })
