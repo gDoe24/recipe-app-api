@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addRecipe, getIngredients } from "../../actions/recipes.js";
-import Ingredients from './Ingredients';
+import IngredientForm from './IngredientForm';
 
 
 const list=[1,2,3];
@@ -18,17 +18,25 @@ constructor(){
     time: '2',
     price: '4',
     servings: '8',
-    ingredients: ['Cashapp','Jellybean'],
+    ingredients: {
+      id: 6,
+      name:'DWade',
+    },
   };
+
+  this.changeState = this.changeState.bind(this);
 }
 	
 	static propTypes = {
 		addRecipe: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired,
 	}
 
   
 
-	onChange = e => this.setState({ [e.target.name]: e.target.value });
+	onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
 
 	onSubmit = e => {
 		e.preventDefault();
@@ -36,6 +44,15 @@ constructor(){
 		const recipe = { title, time, price, servings, ingredients };
 		this.props.addRecipe(recipe);
 	}
+
+  changeState = (value) =>{
+    this.setState({
+      ingredients: {
+      name: this.state.ingredients.name.concat(' '+value),
+      }
+    }),
+    console.log(this.state.ingredients.name)
+  }
 
 	 render() {
     const { title, time, price, servings, ingredients } = this.state;
@@ -85,12 +102,14 @@ constructor(){
             />
           </div>
           <div className="form-group">
-            <Ingredients list={ingredients}/>
-            <div
-              id="display-ingredients"
-              name="ingredients"
-            >
-            <pre>{this.props.list}</pre></div>
+          <label>Ingredients</label>
+            <pre
+            name="ingredients">
+            {ingredients.name}
+            </pre>
+            </div>
+          <div className="form-group">
+            <IngredientForm action={this.changeState} ingredients={ingredients}/>
           </div>
 
           <div className="form-group">
