@@ -19,9 +19,10 @@ constructor(){
     price: '4',
     servings: '8',
     ingredients: {
-      id: 6,
-      name:'DWade',
-    },
+          name:'DWade',
+        },
+    tags: 1,
+    count:1,
   };
 
   this.changeState = this.changeState.bind(this);
@@ -29,10 +30,13 @@ constructor(){
 	
 	static propTypes = {
 		addRecipe: PropTypes.func.isRequired,
-    id: PropTypes.number.isRequired,
+    ingredients: PropTypes.array.isRequired,
 	}
 
   
+   componentDidMount(){
+    ingredients: this.props.getIngredients();
+  }
 
 	onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -51,9 +55,12 @@ constructor(){
       name: this.state.ingredients.name.concat(' '+value),
       }
     }),
-    console.log(this.state.ingredients.name)
+    this.setState(prevState =>({
+          count: prevState.count + 1
+        })),
+    console.log(this.state.count)
   }
-
+  
 	 render() {
     const { title, time, price, servings, ingredients } = this.state;
       
@@ -122,4 +129,10 @@ constructor(){
     );
   }
 }
-export default connect(null, { addRecipe })(Form)
+
+const mapStateToProps = state =>({
+        ingredients: state.recipes.ingredients
+    })
+
+
+export default connect(mapStateToProps, { getIngredients, addRecipe })(Form)

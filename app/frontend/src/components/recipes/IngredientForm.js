@@ -16,15 +16,12 @@ export class IngredientForm extends Component{
 }
 
 	static propType = {
-    ingredients: PropTypes.array.isRequired,
+    
 		addIngredients: PropTypes.func.isRequired,
     name: PropTypes.string.isRequired,
 	}
 
-  componentDidMount(){
-    ingredients: this.props.getIngredients();
-  }
-
+ 
 	onChange = e => this.setState({ [e.target.name]: e.target.value });
 
 	onSubmit = e => {
@@ -34,11 +31,13 @@ export class IngredientForm extends Component{
     this.props.addIngredient(ingredient);
 	}
 
-  
   changeState = (e) => {
       this.props.action(e.target.value)
   }
- 
+  sortFunction = (a,b) =>{
+    return b-a
+  }
+
 	 render() {
     const { name, unit, amount } = this.state;
 
@@ -73,9 +72,11 @@ export class IngredientForm extends Component{
               type="title"
               name="amount"
               onChange={this.onChange}
-              value={this.props.ingredients[0].id}
+              value={amount}
+
             />
-          <button onClick={ this.changeState } value={name}>Level Up</button>
+          <button onClick={ this.changeState}
+           value={name}>Level Up</button>
           </div>
           <div className="form-group">
             <button type="submit" className="btn btn-primary">
@@ -87,8 +88,6 @@ export class IngredientForm extends Component{
     );
   }
 }
-  const mapStateToProps = state =>({
-        ingredients: state.recipes.ingredients
-    })
+  
 
-export default connect(mapStateToProps, { getIngredients, addIngredient })(IngredientForm)
+export default connect(null, { addIngredient })(IngredientForm)
