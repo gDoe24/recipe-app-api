@@ -7,6 +7,7 @@ import IngredientForm from './IngredientForm';
 
 const list=[1,2,3];
 
+
 export class Form extends Component {
 
   
@@ -26,6 +27,7 @@ constructor(){
   };
 
   this.changeState = this.changeState.bind(this);
+ 
 }
 	
 	static propTypes = {
@@ -49,10 +51,18 @@ constructor(){
 		this.props.addRecipe(recipe);
 	}
 
+
+  sortFunction = (a,b) =>{
+    return b-a
+  }
+  
   changeState = (value) =>{
     this.setState({
       ingNames: this.state.ingNames.concat(' '+value),
-      ingredients: this.state.ingredients.concat(4),
+      ingredients: this.state.ingredients.concat(this.props.ingredients.map((a)=>{
+          return a.id
+        }).sort(this.sortFunction)[0] + 1
+      )
     }),
     this.setState(prevState =>({
           count: prevState.count + 1
