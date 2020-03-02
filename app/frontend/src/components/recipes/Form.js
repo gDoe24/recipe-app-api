@@ -18,10 +18,10 @@ constructor(){
     time: '2',
     price: '4',
     servings: '8',
-    ingredients: {
-          name:'DWade',
-        },
-    tags: 1,
+    ingredients: [12],
+    tags: [1],
+    link: "",
+    ingNames:"Dwade ",
     count:1,
   };
 
@@ -44,16 +44,15 @@ constructor(){
 
 	onSubmit = e => {
 		e.preventDefault();
-		const { title, time, price, servings, ingredients } = this.state;
-		const recipe = { title, time, price, servings, ingredients };
+		const { title, time, price, servings, ingredients, tags, link } = this.state;
+		const recipe = { title, time, price, servings, ingredients, tags, link };
 		this.props.addRecipe(recipe);
 	}
 
   changeState = (value) =>{
     this.setState({
-      ingredients: {
-      name: this.state.ingredients.name.concat(' '+value),
-      }
+      ingNames: this.state.ingNames.concat(' '+value),
+      ingredients: this.state.ingredients.concat(4),
     }),
     this.setState(prevState =>({
           count: prevState.count + 1
@@ -62,12 +61,12 @@ constructor(){
   }
   
 	 render() {
-    const { title, time, price, servings, ingredients } = this.state;
+    const { title, time, price, servings, ingredients,ingNames } = this.state;
       
     return (
       <div className="card card-body mt-4 mb-4">
         <h2>Add Recipe</h2>
-        <form onSubmit={this.onSubmit}>
+        <form >
           <div className="form-group">
             <label>Title</label>
             <input
@@ -112,7 +111,7 @@ constructor(){
           <label>Ingredients</label>
             <pre
             name="ingredients">
-            {ingredients.name}
+            {ingNames}
             </pre>
             </div>
           <div className="form-group">
@@ -120,7 +119,7 @@ constructor(){
           </div>
 
           <div className="form-group">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" onClick = {this.onSubmit} className="btn btn-primary">
               Submit
             </button>
           </div>

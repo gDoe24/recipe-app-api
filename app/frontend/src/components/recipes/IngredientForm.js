@@ -75,11 +75,10 @@ export class IngredientForm extends Component{
               value={amount}
 
             />
-          <button onClick={ this.changeState}
-           value={name}>Level Up</button>
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" onClick={ this.changeState}
+           value={name} className="btn btn-primary">
               Submit
             </button>
           </div>

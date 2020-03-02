@@ -29,7 +29,7 @@
  //Add Recipe
 
   export const addRecipe = (recipe) => (dispatch, getState) =>{
-	axios.post('/api/recipe/recipes', recipe, tokenConfig(getState))
+	axios.post('/api/recipe/recipes/', recipe, tokenConfig(getState))
 		.then(res => {
 			dispatch({
 				type: ADD_RECIPE,
