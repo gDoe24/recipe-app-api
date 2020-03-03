@@ -1,7 +1,7 @@
  import axios from 'axios';
 
  import { GET_RECIPES, DELETE_RECIPE, ADD_RECIPE,
-  GET_INGREDIENTS, ADD_INGREDIENT } from './types';
+  GET_INGREDIENTS, ADD_INGREDIENT, GET_TAGS } from './types';
 
   import { tokenConfig } from './auth';
 
@@ -54,6 +54,16 @@
 		.then(res => {
 			dispatch({
 				type: ADD_INGREDIENT,
+				payload: res.data
+			});
+		}).catch(err => console.log(err));
+ };
+
+  export const getTags = () => (dispatch, getState) =>{
+	axios.get('/api/recipe/tags', tokenConfig(getState))
+		.then(res => {
+			dispatch({
+				type: GET_TAGS,
 				payload: res.data
 			});
 		}).catch(err => console.log(err));

@@ -71,7 +71,7 @@ constructor(){
   }
   
 	 render() {
-    const { title, time, price, servings, ingredients,ingNames } = this.state;
+    const { title, time, price, servings, ingredients,ingNames, tags } = this.state;
       
     return (
       <div className="card card-body mt-4 mb-4">
@@ -127,7 +127,16 @@ constructor(){
           <div className="form-group">
             <IngredientForm action={this.changeState} ingredients={ingredients}/>
           </div>
-
+          <div className="form-group">
+            <label>Tags</label>
+            <input
+              className="form-control"
+              type="title"
+              name="tags"
+              onChange={this.onChange}
+              value={tags}
+            />
+          </div>
           <div className="form-group">
             <button type="submit" onClick = {this.onSubmit} className="btn btn-primary">
               Submit

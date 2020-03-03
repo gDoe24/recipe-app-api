@@ -3,6 +3,7 @@ export const DELETE_RECIPE = "GET_RECIPE";
 export const ADD_RECIPE = "ADD_RECIPE";
 export const GET_INGREDIENTS = "GET_INGREDIENTS";
 export const ADD_INGREDIENT = "ADD_INGREDIENT";
+export const GET_TAGS = "GET_TAGS";
 export const USER_LOADING = "USER_LOADING";
 export const USER_LOADED = "USER_LOADED";
 export const AUTH_ERROR = "AUTH_ERROR";
