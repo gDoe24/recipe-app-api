@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addRecipe, getIngredients } from "../../actions/recipes.js";
-import Ingredients from './Ingredients';
+import IngredientForm from './IngredientForm';
 
 
 const list=[1,2,3];
+
 
 export class Form extends Component {
 
@@ -18,32 +19,64 @@ constructor(){
     time: '2',
     price: '4',
     servings: '8',
-    ingredients: ['Cashapp','Jellybean'],
+    ingredients: [12],
+    tags: [1],
+    link: "",
+    ingNames:"Dwade ",
+    count:1,
   };
+
+  this.changeState = this.changeState.bind(this);
+ 
 }
 	
 	static propTypes = {
 		addRecipe: PropTypes.func.isRequired,
+    ingredients: PropTypes.array.isRequired,
 	}
 
   
+   componentDidMount(){
+    ingredients: this.props.getIngredients();
+  }
 
-	onChange = e => this.setState({ [e.target.name]: e.target.value });
+	onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  }
 
 	onSubmit = e => {
 		e.preventDefault();
-		const { title, time, price, servings, ingredients } = this.state;
-		const recipe = { title, time, price, servings, ingredients };
+		const { title, time, price, servings, ingredients, tags, link } = this.state;
+		const recipe = { title, time, price, servings, ingredients, tags, link };
 		this.props.addRecipe(recipe);
 	}
 
+
+  sortFunction = (a,b) =>{
+    return b-a
+  }
+  
+  changeState = (value) =>{
+    this.setState({
+      ingNames: this.state.ingNames.concat(' '+value),
+      ingredients: this.state.ingredients.concat(this.props.ingredients.map((a)=>{
+          return a.id
+        }).sort(this.sortFunction)[0] + 1
+      )
+    }),
+    this.setState(prevState =>({
+          count: prevState.count + 1
+        })),
+    console.log(this.state.count)
+  }
+  
 	 render() {
-    const { title, time, price, servings, ingredients } = this.state;
+    const { title, time, price, servings, ingredients,ingNames, tags } = this.state;
       
     return (
       <div className="card card-body mt-4 mb-4">
         <h2>Add Recipe</h2>
-        <form onSubmit={this.onSubmit}>
+        <form >
           <div className="form-group">
             <label>Title</label>
             <input
@@ -85,16 +118,27 @@ constructor(){
             />
           </div>
           <div className="form-group">
-            <Ingredients list={ingredients}/>
-            <div
-              id="display-ingredients"
-              name="ingredients"
-            >
-            <pre>{this.props.list}</pre></div>
-          </div>
-
+          <label>Ingredients</label>
+            <pre
+            name="ingredients">
+            {ingNames}
+            </pre>
+            </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary">
+            <IngredientForm action={this.changeState} ingredients={ingredients}/>
+          </div>
+          <div className="form-group">
+            <label>Tags</label>
+            <input
+              className="form-control"
+              type="title"
+              name="tags"
+              onChange={this.onChange}
+              value={tags}
+            />
+          </div>
+          <div className="form-group">
+            <button type="submit" onClick = {this.onSubmit} className="btn btn-primary">
               Submit
             </button>
           </div>
@@ -103,4 +147,10 @@ constructor(){
     );
   }
 }
-export default connect(null, { addRecipe })(Form)
+
+const mapStateToProps = state =>({
+        ingredients: state.recipes.ingredients
+    })
+
+
+export default connect(mapStateToProps, { getIngredients, addRecipe })(Form)

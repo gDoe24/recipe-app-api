@@ -1,27 +1,43 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addIngredient } from "../../actions/recipes.js";
+import { addIngredient, getIngredients } from "../../actions/recipes.js";
+
+
 
 export class IngredientForm extends Component{
-	state={
-		name: 'Bean',
-		unit: 'cups',
-		amount: '8',
-	};
+	constructor() {
+    super()
+      this.state={
+  		name: 'Cheese',
+  		unit: 'cup',
+  		amount: 1,
+  	}
+}
 
 	static propType = {
+    
 		addIngredients: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired,
 	}
 
+ 
 	onChange = e => this.setState({ [e.target.name]: e.target.value });
 
 	onSubmit = e => {
 		e.preventDefault();
 		const {name, unit, amount} = this.state;
 		const ingredient = {name, unit, amount};
-		this.props.addIngredient(ingredient);
+    this.props.addIngredient(ingredient);
 	}
+
+  changeState = (e) => {
+      this.props.action(e.target.value)
+  }
+  sortFunction = (a,b) =>{
+    return b-a
+  }
+
 	 render() {
     const { name, unit, amount } = this.state;
 
@@ -57,10 +73,12 @@ export class IngredientForm extends Component{
               name="amount"
               onChange={this.onChange}
               value={amount}
+
             />
           </div>
           <div className="form-group">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" onClick={ this.changeState}
+           value={name} className="btn btn-primary">
               Submit
             </button>
           </div>
@@ -69,6 +87,6 @@ export class IngredientForm extends Component{
     );
   }
 }
-
+  
 
 export default connect(null, { addIngredient })(IngredientForm)

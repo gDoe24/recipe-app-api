@@ -77,11 +77,6 @@ export const createUser = ({ email,password,name }) => dispatch =>{
 				type: CREATE_USER_SUCCESS,
 				payload: res.data
 			});
-		}).then(res =>{
-			dispatch({
-				type: LOGIN_SUCCESS,
-				payload: res.data
-			});
 		}).catch(err=>{
 			dispatch({
 				type:CREATE_USER_FAIL
