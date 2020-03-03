@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addRecipe, getIngredients } from "../../actions/recipes.js";
 import IngredientForm from './IngredientForm';
+import Tags from "./Tags";
 
 
 const list=[1,2,3];
@@ -20,7 +21,7 @@ constructor(){
     price: '4',
     servings: '8',
     ingredients: [12],
-    tags: [1],
+    tags: [],
     link: "",
     ingNames:"Dwade ",
     count:1,
@@ -68,6 +69,12 @@ constructor(){
           count: prevState.count + 1
         })),
     console.log(this.state.count)
+  }
+
+  getId = (value) =>{
+    this.setState({
+      tags: this.state.tags.concat(+value)
+    })
   }
   
 	 render() {
@@ -127,16 +134,7 @@ constructor(){
           <div className="form-group">
             <IngredientForm action={this.changeState} ingredients={ingredients}/>
           </div>
-          <div className="form-group">
-            <label>Tags</label>
-            <input
-              className="form-control"
-              type="title"
-              name="tags"
-              onChange={this.onChange}
-              value={tags}
-            />
-          </div>
+        <Tags action={this.getId}/>
           <div className="form-group">
             <button type="submit" onClick = {this.onSubmit} className="btn btn-primary">
               Submit
@@ -149,7 +147,7 @@ constructor(){
 }
 
 const mapStateToProps = state =>({
-        ingredients: state.recipes.ingredients
+        ingredients: state.recipes.ingredients,
     })
 
 

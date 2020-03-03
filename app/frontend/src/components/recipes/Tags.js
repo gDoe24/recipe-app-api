@@ -13,11 +13,9 @@ export class Tags extends Component{
 		tags: this.props.getTags();
 	}
 	
-	addData = (e) => {
-		/*console.log(e.target.value)*/
-		this.props.list.push(e.target.value);
-		var newList=this.props.list;
-		this.setState({list: newList})
+	addId = (e) => {
+		console.log(e.target.value)
+		this.props.action(e.target.value)
 	}	
 	
 	render(){
@@ -29,8 +27,8 @@ export class Tags extends Component{
 				<table className ="table mb-0" style={{width: 150 + 'px', text_align: 'left'}}>
 					<tbody>
 						{ this.props.tags.map(tag =>(
-							<tr key={tag.id}>
-							<td><button className="btn ing-list" onClick={this.addData} value={tag.name}
+							<tr >
+							<td key={tag.id}><button className="btn ing-list" onClick={this.addId} value={tag.id}
 							>{tag.name}</button></td>
 						</tr>
 						)
