@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
+import '../../../../core/static/css/frontend.css'
 
 export class Header extends Component {
 
@@ -40,13 +41,14 @@ export class Header extends Component {
     
 
     return (
-		<nav className="navbar navbar-expand-md">
+      <header>
+		<nav className="navbar navbar-expand-md fixed-top" >
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
   <div className="nav-item" id="head"><a className="nav-link" href="../">Word</a>
   </div>
-  <div className="collapse navbar-collapse justify-content-md-center" id="navbar">
+  <div className="collapse navbar-collapse justify-content-md-center nav-items" id="navbar">
     <ul className="navbar-nav">
       <li className="nav-item active">
         <a className="nav-link" href="../all_recipes">Recipes<span className="sr-only">(current)</span></a>
@@ -69,6 +71,7 @@ export class Header extends Component {
     </ul>
   </div>
 </nav>
+</header>
     )
   }
 }

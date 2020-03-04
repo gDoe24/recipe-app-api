@@ -81,6 +81,7 @@ constructor(){
     const { title, time, price, servings, ingredients,ingNames, tags } = this.state;
       
     return (
+      <div className="container form-container">
       <div className="card card-body mt-4 mb-4">
         <h2>Add Recipe</h2>
         <form >
@@ -141,6 +142,7 @@ constructor(){
             </button>
           </div>
         </form>
+      </div>
       </div>
     );
   }

@@ -10,6 +10,7 @@ import Dashboard from "./recipes/Dashboard";
 import Login from "./users/Login";
 import Register from "./users/Register";
 import PrivateRoute from "./common/PrivateRoute"
+import '../../../core/static/css/frontend.css'
 
 class App extends Component {
 
