@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
-import '../../../../core/static/css/frontend.css'
+import '../../../../core/static/css/frontend.css';
 
 export class Header extends Component {
 
@@ -46,15 +46,15 @@ export class Header extends Component {
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
-  <div className="nav-item" id="head"><a className="nav-link" href="../">Word</a>
+  <div className="nav-item" id="head"><a className="nav-link" href="../../">Word</a>
   </div>
   <div className="collapse navbar-collapse justify-content-md-center nav-items" id="navbar">
     <ul className="navbar-nav">
       <li className="nav-item active">
-        <a className="nav-link" href="../all_recipes">Recipes<span className="sr-only">(current)</span></a>
+        <a className="nav-link" href="../../all_recipes">Recipes<span className="sr-only">(current)</span></a>
       </li>
       <li className="nav-item">
-        <a className="nav-link disabled" href="#">myRecipes</a>
+        <Link className="nav-link" to="/my_recipes">myRecipes</Link>
       </li>
       <li className="nav-item">
         <a className="nav-link " href="#" tabindex="-1" aria-disabled="true">Vegan</a>
