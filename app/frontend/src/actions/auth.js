@@ -29,7 +29,7 @@ export const loadUser = () => (dispatch, getState) =>{
 		});
 }
 
-export const login = (email, password) => dispatch =>{
+export const login = (email, password) => (dispatch,getState) =>{
 	
 	//Headers
 	const config = {
