@@ -29,8 +29,8 @@ export class Ingredients extends Component{
 				<table className ="table mb-0" style={{width: 150 + 'px', text_align: 'left'}}>
 					<tbody>
 						{ this.props.ingredients.map(ingredient =>(
-							<tr key={ingredient.id}>
-							<td><button className="btn ing-list" onClick={this.addData} value={ingredient.name}
+							<tr>
+							<td key= {ingredient.id}><button key="btn" className="btn ing-list" onClick={this.addData} value={ingredient.name}
 							>{ingredient.name}</button></td>
 						</tr>
 						)

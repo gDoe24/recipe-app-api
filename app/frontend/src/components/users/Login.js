@@ -32,7 +32,7 @@ export class Login extends React.Component {
   	render() {
 
       if(this.props.isAuthenticated){
-        return <Redirect to="/" />;
+        return <Redirect to="/my_recipes" />;
       }
 
   		const {email, password} = this.state;

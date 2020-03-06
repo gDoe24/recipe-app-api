@@ -9,7 +9,9 @@ import { loadUser } from "../actions/auth";
 import Dashboard from "./recipes/Dashboard";
 import Login from "./users/Login";
 import Register from "./users/Register";
-import PrivateRoute from "./common/PrivateRoute"
+import PrivateRoute from "./common/PrivateRoute";
+import MyRecipes from "./recipes/MyRecipes";
+import '../../../core/static/css/frontend.css';
 
 class App extends Component {
 
@@ -30,6 +32,8 @@ class App extends Component {
 								{Register} />
 								<Route exact path="/login" component=
 								{Login} />
+								<Route exact path="/my_recipes" component=
+								{MyRecipes} />
 							</Switch>
 						</div>
 					</Fragment>
