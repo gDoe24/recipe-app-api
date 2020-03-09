@@ -3,6 +3,65 @@
  * Copyright 2013-2019 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/LICENSE)
  */
+
+ {% load static %}
 body {
-  padding-top: 25px;
+  
 }
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  nav{
+  	font-family: 'Montserrat', sans-serif;
+  }
+  .justify-content-md-center{
+  	margin-left:30%;
+  }
+
+  li{
+    margin-left: 1px;
+    margin-right: 1px;
+    font-size: 1.2rem;
+    color:red;
+  }
+  .nav-link{
+    color:red;
+  }
+  #head{
+    font-size: 1.2rem;
+    color: red;
+    margin-left:10px;
+  }
+  
+  #author{
+    font-size:1rem;
+  }
+  .featured{
+  	margin-left:8%;
+  }
+  .jumbo-h1{
+	font-family: 'Arvo', serif;
+	font-weight:500;
+
+  }
+  .jumbo-h2{
+  	font-family: 'Raleway', sans-serif;
+  	margin-left:2%;
+  }
+	.jumbo-p{
+		width:35vw;
+		margin-left:2%;
+	}
+	.jumbo-btn{
+		margin-left:2%;
+	}
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }

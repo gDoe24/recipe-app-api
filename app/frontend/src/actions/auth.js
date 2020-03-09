@@ -95,6 +95,20 @@ export const createUser = ({ email,password,name }) => dispatch =>{
 				type:CREATE_USER_FAIL
 			});
 		});
+
+	setTimeout(()=>{
+		axios.get('/api/user/me', tokenConfig(getState))
+		.then(res =>{
+			dispatch({
+				type: USER_LOADED,
+				payload: res.data
+			});
+		}).catch(err=>{
+			dispatch({
+				type:AUTH_ERROR
+			});
+		});
+	},500)
 }
 
 //Logout

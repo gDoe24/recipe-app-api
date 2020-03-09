@@ -10,6 +10,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Arvo:400i|Montserrat|Raleway:400i&display=swap" rel="stylesheet">
 
     <title>Recipe app</title>
   </head>
@@ -17,66 +18,33 @@
 
 
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      li{
-        margin-left: 1px;
-        margin-right: 1px;
-        font-size: 1.2rem;
-        color:red;
-      }
-      .nav-link{
-        color:red;
-      }
-      #head{
-        font-size: 1.2rem;
-        color: red;
-        margin-left:10px;
-      }
       #jumbo{
-        background-image:url("{% static 'cooking.jpg' %}");
+        background-image:url("{{recipes.0.image.url}}");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         height: 70vh;
-      }
-      #author{
-        font-size:1rem;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
+        position:relative;
+        margin-bottom: 0;
       }
     </style>
     <!-- Custom styles for this template -->
     <link href="album.css" rel="stylesheet">
+    <link href="{% static 'css/shop-homepage.css'%}" rel="stylesheet">
   </head>
   <body>
-    {% include "user/header.html" %}
-
 <main role="main">
-
-  <section id="jumbo" class="jumbotron img-fluid text-center">
-    <div class="container">
-    	<h1 class="">Recipes Made 4 You By You
-    	</h1>
-      <div class="text-center">
-        <form class="form my-2 my-md-0" style="width:40%; margin: 0 auto; padding-top: 60px">
-      <input class="form-control" type="text" placeholder="Search">
-    	</form>
-     </div>
+  <section id="jumbo" class="jumbotron img-fluid text-left text-white rounded bg-dark">
+    <div class="container featured">
+      <h1 class="jumbo-h1 display-4 font-italic">Featured Recipe</h1>
+    	<h2 class="jumbo-h2">{{ recipes.0.title }}</h2>
+    <p class="jumbo-p">{{recipes.0.description}}</p>
+    <div class="jumbo-btn-div">
+    <button type="button" class="btn btn-outline-secondary jumbo-btn">View Recipe</button>
+  </div>
     </div>
   </section>
-
+{% include "user/header.html" %}
   <div class="album py-5 bg-light">
   	
 
