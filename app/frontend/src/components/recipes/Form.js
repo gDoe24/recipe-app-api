@@ -20,10 +20,10 @@ constructor(){
     time: '2',
     price: '4',
     servings: '8',
-    ingredients: [12],
+    ingredients: [],
     tags: [],
     link: "",
-    ingNames:"Dwade ",
+    ingNames:" ",
     count:1,
   };
 
@@ -73,7 +73,7 @@ constructor(){
 
   getId = (value) =>{
     this.setState({
-      tags: this.state.tags.concat(+value)
+      tags: value
     })
   }
   

@@ -69,4 +69,4 @@ const mapStateToProps = state => ({
   recipes: state.recipes.recipes
 });
 
-export default connect(mapStateToProps, {getRecipes, deleteRecipe})(MyRecipes);
+export default connect(mapStateToProps, {getRecipes, deleteRecipe })(MyRecipes);

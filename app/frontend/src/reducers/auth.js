@@ -28,6 +28,7 @@ export default function(state = initialState, action){
 			return{
 				...state,
 				...action.payload,
+				user:action.payload.token,
 				isAuthenticated: true,
 				isLoading: false,
 			}

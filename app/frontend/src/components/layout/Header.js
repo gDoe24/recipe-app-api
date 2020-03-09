@@ -11,9 +11,7 @@ export class Header extends Component {
     auth: PropTypes.object.isRequired,
     logout: PropTypes.func.isRequired,
   };
-
-  
-
+   
   render() {
 
     const { isAuthenticated, user } = this.props.auth;
@@ -82,4 +80,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { logout })(Header);
+export default connect(mapStateToProps, { logout})(Header);

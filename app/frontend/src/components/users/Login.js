@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login, loadUser } from "../../actions/auth";
 import { default as reducer, actions } from 'redux-csrf';
+
+import Header from "../layout/Header"
 
 
 
@@ -33,12 +35,13 @@ export class Login extends React.Component {
   	render() {
 
       if(this.props.isAuthenticated){
-        return <Redirect to="/" />;
+        return <Redirect to="/my_recipes" />;
       }
 
   		const {email, password} = this.state;
 
   		return (
+        
   			<div className="col-md-6 m-auto">
           <div className="card card-body mt-5">
             <h2 className="text-center">Login</h2>
