@@ -5,8 +5,8 @@
  */
 
  {% load static %}
-body {
-  
+main {
+  background-color: #f5f5f5;
 }
 .bd-placeholder-img {
     font-size: 1.125rem;
@@ -18,19 +18,20 @@ body {
   }
   nav{
   	font-family: 'Montserrat', sans-serif;
+  	background-color: white !important;
   }
   .justify-content-md-center{
   	margin-left:30%;
   }
 
-  li{
+  nav li{
     margin-left: 1px;
     margin-right: 1px;
     font-size: 1.2rem;
-    color:red;
+    color:#e70e02;
   }
   .nav-link{
-    color:red;
+    color:#e70e02;
   }
   #head{
     font-size: 1.2rem;
@@ -38,28 +39,62 @@ body {
     margin-left:10px;
   }
   
+  
+  /* Styling for Category section*/
+  .album{
+  	background-color: #f5f5f5!important;
+  }
+  .album-header{
+  	padding: 8% 0 7% 0;
+  }
+  #cat-h-1{
+	color:#656E64!important;
+  }
+  #cat-h-2{
+  	color:#EB5201!important;
+  }
+/* Styling for Category cards*/
+.tag-card{
+	border-radius: 10px 10px 0 0 !important;
+}
+.tag-img{
+	border-radius: 10px 10px 0 0 !important;
+}
+  .tag-card-body{
+	text-align:center!important;
+  }
+  #tag-title{
+  	font-family:'Roboto', sans-serif;
+  	font-size: 1.5rem;
+  }
+  #tag-title a{
+  	color:#c50F05!important;
+  }
+
+/* Styling our favorites recipe section */
+.album-head-rec{
+	padding-top:8%;
+}
+  #rec-h-1{
+  	margin-left:5%;
+	color:#C50F0F;
+  }
+  #rec-h-2{
+	color:#E5dF26;
+  }
   #author{
+  	text-align: center;
     font-size:1rem;
   }
-  .featured{
-  	margin-left:8%;
-  }
-  .jumbo-h1{
-	font-family: 'Arvo', serif;
-	font-weight:500;
+  .rec-img{
 
   }
-  .jumbo-h2{
-  	font-family: 'Raleway', sans-serif;
-  	margin-left:2%;
+  .rec-body{
+	
   }
-	.jumbo-p{
-		width:35vw;
-		margin-left:2%;
-	}
-	.jumbo-btn{
-		margin-left:2%;
-	}
+  .rec-desc{
+	text-align: center;
+  }
   @media (min-width: 768px) {
     .bd-placeholder-img-lg {
       font-size: 3.5rem;

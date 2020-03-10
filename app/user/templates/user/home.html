@@ -19,13 +19,16 @@
 
     <style>
       #jumbo{
-        background-image:url("{{recipes.0.image.url}}");
+        background-image:url("{% static 'cooking.jpg' %}");
+        background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 70vh;
+        margin-top: 4%;
+        height: 95vh;
         position:relative;
         margin-bottom: 0;
+
       }
     </style>
     <!-- Custom styles for this template -->
@@ -34,32 +37,51 @@
   </head>
   <body>
 <main role="main">
+  {% include "user/header.html" %}
   <section id="jumbo" class="jumbotron img-fluid text-left text-white rounded bg-dark">
-    <div class="container featured">
-      <h1 class="jumbo-h1 display-4 font-italic">Featured Recipe</h1>
-    	<h2 class="jumbo-h2">{{ recipes.0.title }}</h2>
-    <p class="jumbo-p">{{recipes.0.description}}</p>
-    <div class="jumbo-btn-div">
-    <button type="button" class="btn btn-outline-secondary jumbo-btn">View Recipe</button>
   </div>
     </div>
   </section>
-{% include "user/header.html" %}
-  <div class="album py-5 bg-light">
-  	
 
+  <div class="container">
+    <div class="row justify-content-center album-header">
+        <h1 id="cat-h-1">Choose a&nbsp</h1><h1 id="cat-h-2">Category</h1>
+    </div>
+    <div class="row">
     <div class="container">
-	Latest Recipes
+      <div class="row">
+{% for tag in tags %}
+        <div class="col-md-3">
+          <div class="card tag-card mb-4">
+            <a href="#"><img class="bd-placeholder-img tag-img card-img-top"  src="{{ tag.image.url }}" width="100%" height="225px" role="img"></a>
+            <div class="card-body tag-card-body">
+              <h1 id="tag-title"><a href="#"><strong>{{tag.name}}</strong></a></h1>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+   
+  </div>
+
+<div class="container">
+  <div class="row justify-content-left album-header album-header-rec">
+        <h1 id="rec-h-1">Our&nbsp</h1><h1 id="rec-h-2">Favorites</h1>
+    </div>
+  <div class="album py-5 bg-light">
+    <div class="container">
       <div class="row">
 {% for recipe in recipes %}
         <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <a href="{% url 'detail' recipe.id %}"><img class="bd-placeholder-img card-img-top img-thumbnail"  src="{{ recipe.image.url }}" width="100%" height="225px" role="img"></a>
-            <div class="card-body">
+          <div class=" mb-4 shadow-sm">
+            <a href="{% url 'detail' recipe.id %}"><img class="bd-placeholder-img rec-img card-img-top"  src="{{ recipe.image.url }}" width="100%" height="225px" role="img"></a>
+            <div class="rec-body">
             	<h1 id="author"><a href="{% url 'detail' recipe.id %}"><strong>{{recipe.title}}</strong> by {{recipe.user.name}}</a></h1>
-              <p class="card-text">{{recipe.description}}</p>
+              <p class="rec-desc">{{recipe.description}}</p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
+                <div class="btn-group mx-auto" >
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
@@ -70,7 +92,7 @@
         </div>
         {% endfor %}
       </div>
-      
+      </div>
     </div>
   </div>
 
