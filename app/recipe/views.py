@@ -118,8 +118,8 @@ def all_recipes(request):
 	tag=Tag.objects.all()
 	ingredient=Ingredient.objects.all()
 
-	paginator = Paginator(recipe_list, 1)
-	page = request.GET.get('page',2)
+	paginator = Paginator(recipe_list, 6)
+	page = request.GET.get('page',1)
 	recipe = paginator.get_page(page)
 
 	return render(request, 'recipe/all_recipes.html',{'recipes':recipe, 'tags':tag, 'ingredients':ingredient})

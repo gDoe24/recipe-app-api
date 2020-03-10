@@ -75,6 +75,9 @@ main {
 .album-head-rec{
 	padding-top:8%;
 }
+.album-rec{
+	padding-bottom:15%;
+}
   #rec-h-1{
   	margin-left:5%;
 	color:#C50F0F;
@@ -87,13 +90,21 @@ main {
     font-size:1rem;
   }
   .rec-img{
-
-  }
-  .rec-body{
 	
+  }
+  .rec-body {
+  	width:85%;
+  }
+  .rec-body a{
+	color:#484848!important;
+	font-size:1.3rem;
+  }
+  .rec-details{
+  	text-align: center;
   }
   .rec-desc{
 	text-align: center;
+	color:#c50F05!important;
   }
   @media (min-width: 768px) {
     .bd-placeholder-img-lg {

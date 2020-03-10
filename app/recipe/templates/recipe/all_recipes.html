@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-{% load staticfiles %}
+{% load static %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -13,25 +13,12 @@
   <!-- Bootstrap core CSS -->
   <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <!-- Custom styles for this template -->
-  <link href="{%static 'css/shop-homepage.css' %}" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="{% static 'css/shop-homepage.css'%}" rel="stylesheet">
 
   <style>
-    li{
-        margin-left: 1px;
-        margin-right: 1px;
-        font-size: 1.2rem;
-        color:red;
-      }
-      .nav-link{
-        color:red;
-      }
-      #head{
-        font-size: 1.2rem;
-        color: red;
-        margin-left:10px;
-      }
+    
       #pagination{
         text-align: center;
         margin-top:1em;
@@ -50,7 +37,7 @@
 
   <!-- Navigation -->
   
-  {% include 'user/header.html' %}
+  {% include "user/header.html" %}
   <!-- Page Content -->
   <div class="container" style="padding-top: 8%">
 

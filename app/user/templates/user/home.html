@@ -10,7 +10,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Arvo:400i|Montserrat|Raleway:400i&display=swap" rel="stylesheet">
+    <link href="album.css" rel="stylesheet">
+    <link href="{% static 'css/shop-homepage.css'%}" rel="stylesheet">
 
     <title>Recipe app</title>
   </head>
@@ -30,20 +33,29 @@
         margin-bottom: 0;
 
       }
+      #jumbo-2{
+        background-image:url("{% static 'whip-game.jpg' %}");
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-top: 8%;
+        height: 100vh;
+        position:relative;
+        margin-bottom: 0;
+
+      }
     </style>
     <!-- Custom styles for this template -->
-    <link href="album.css" rel="stylesheet">
-    <link href="{% static 'css/shop-homepage.css'%}" rel="stylesheet">
+    
   </head>
   <body>
 <main role="main">
   {% include "user/header.html" %}
   <section id="jumbo" class="jumbotron img-fluid text-left text-white rounded bg-dark">
-  </div>
-    </div>
   </section>
 
-  <div class="container">
+  <div class="container pb-5">
     <div class="row justify-content-center album-header">
         <h1 id="cat-h-1">Choose a&nbsp</h1><h1 id="cat-h-2">Category</h1>
     </div>
@@ -66,26 +78,30 @@
    
   </div>
 
-<div class="container">
+<section id="jumbo-2" class="jumbotron img-fluid rounded bg-dark">
+  </section>
+
+<div class="container album-rec ">
   <div class="row justify-content-left album-header album-header-rec">
         <h1 id="rec-h-1">Our&nbsp</h1><h1 id="rec-h-2">Favorites</h1>
     </div>
-  <div class="album py-5 bg-light">
+  <div class="album py-3 bg-light">
     <div class="container">
       <div class="row">
 {% for recipe in recipes %}
         <div class="col-md-4">
-          <div class=" mb-4 shadow-sm">
+          <div class=" mb-4 ">
             <a href="{% url 'detail' recipe.id %}"><img class="bd-placeholder-img rec-img card-img-top"  src="{{ recipe.image.url }}" width="100%" height="225px" role="img"></a>
-            <div class="rec-body">
-            	<h1 id="author"><a href="{% url 'detail' recipe.id %}"><strong>{{recipe.title}}</strong> by {{recipe.user.name}}</a></h1>
+            <div class="rec-body mx-auto">
+            	<h1 id="author" class="pt-4 pb-1"><a href="{% url 'detail' recipe.id %}"><strong>{{recipe.title}}</strong> by {{recipe.user.name}}</a></h1>
               <p class="rec-desc">{{recipe.description}}</p>
+              <div class="container rec-details">
+                  <p>{{recipe.time}}<i class="fas fa-stopwatch"></i> &emsp; ${{recipe.price}} &emsp; Servings: {{recipe.servings}}</p>
+              </div>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group mx-auto" >
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View Recipe</button>
                 </div>
-                <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
