@@ -39,7 +39,27 @@ main {
     margin-left:10px;
   }
   
-  
+  /* Style homepage jumbotrons*/
+  #jumbo{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 4%;
+    height: 95vh;
+    position:relative;
+    margin-bottom: 0;
+  }
+  #jumbo-2{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 8%;
+    height: 100vh;
+    position:relative;
+    margin-bottom: 0;
+    }
   /* Styling for Category section*/
   .album{
   	background-color: #f5f5f5!important;
@@ -105,6 +125,64 @@ main {
   .rec-desc{
 	text-align: center;
 	color:#c50F05!important;
+  }
+
+
+  /*ALL_RECIPES TEMPLATE STYLING*/
+   #pagination{
+      text-align: center;
+      margin-top:1em;
+    }
+    #pagination-action{
+      margin: 0 0 1em;
+      display: inline-block;
+      padding:.5em;
+      font-size:1.3em;
+    }
+
+    /* RECIPE DETAIL STYLING */
+    .feature-container{
+      float:left;
+      clear:right;
+      height:297px;width:450px
+    }
+    #featured {
+      border: 2px groove;
+      border-radius: 4px;
+      padding: 3px;
+      height: 100%;
+      width: 100%;
+    }
+   .ing-td,.ing-th{
+    font-size: .9rem;
+    padding: .5rem;
+    text-align:left;
+  }
+  .ing-th{
+    border-bottom: 1px solid black;
+  }
+  #big-row{
+    border-bottom: 1px dashed black;
+  }
+  .my-custom-scrollbar {
+    position:relative;
+    height: 300px;
+    overflow: auto;
+    display: block;
+  }
+  .recipe-stats{
+    clear:left; 
+    padding-top: 10px
+  }
+  @media screen and (max-width:768px){
+    .my-custom-scrollbar {
+    position:relative;
+    height: 300px;
+    overflow: auto;
+    display: block;
+    clear:left;
+    padding-top: 20px;
+    }
   }
   @media (min-width: 768px) {
     .bd-placeholder-img-lg {

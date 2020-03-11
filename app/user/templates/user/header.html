@@ -18,10 +18,10 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
         <div class="dropdown-menu" aria-labelledby="dropdown08">
-          <a class="dropdown-item" href="#">Vegan</a>
-          <a class="dropdown-item" href="#">Breakfast</a>
-          <a class="dropdown-item" href="#">Lunch</a>
-          <a class="dropdown-item" href="#">Dinner</a>
+          <a class="dropdown-item" href="{% url 'tag_detail' 2 %}">Vegan</a>
+          <a class="dropdown-item" href="{% url 'tag_detail' 3 %}">Breakfast</a>
+          <a class="dropdown-item" href="{% url 'tag_detail' 4 %}">Lunch</a>
+          <a class="dropdown-item" href="{% url 'tag_detail' 1 %}">Dinner</a>
         </div>
       </li>
       <li class="nav-item">

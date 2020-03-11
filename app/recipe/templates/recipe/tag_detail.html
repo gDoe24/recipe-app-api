@@ -1,5 +1,15 @@
-<h1>{{ tag.name }}</h1>
+<!doctype html>
 
-{% for recipe in recipes %}
-<h2>{{ recipe.title }}</h2>
-{% endfor %}
+<html lang="en">
+{% load static %}
+
+{% include 'user/head.html' %}
+
+{% include 'user/header.html' %}
+
+<div class="container py-5">
+	<h1>{{tag.name}}</h1>
+	{% include 'recipe/sortby_tags.html' %}
+</div>
+
+

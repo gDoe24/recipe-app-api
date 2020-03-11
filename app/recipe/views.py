@@ -110,7 +110,7 @@ def create_recipe(request):
 def detail(request,recipe_id):
 	recipe = get_object_or_404(Recipe, pk=recipe_id)
 	tag=Tag.objects.all()
-	ingredient=Ingredient.objects.all()
+	ingredient=Ingredient.objects.filter(recipe=recipe_id)
 	return render(request, 'recipe/detail.html', {'recipe':recipe, 'tags':tag, 'ingredients':ingredient})
 
 def all_recipes(request):
