@@ -5,18 +5,27 @@ import { getTags } from "../../actions/recipes.js";
 
 
 export class Tags extends Component{
+
+	constructor() {
+		super();
+		this.state = {
+			isActive:null,
+		}
+	}
 	static propType = {
 		tags: PropTypes.array.isRequired,
 	}
-
 	componentDidMount(){
 		tags: this.props.getTags();
 	}
 	
 	addId = (e) => {
 		console.log(e.target.value)
-		this.props.action(e.target.value)
-	}	
+		this.props.action(e.target.value);
+		this.setState({
+			isActive:e.target.value
+		});
+	}
 	
 	render(){
 		
@@ -28,7 +37,11 @@ export class Tags extends Component{
 					<tbody>
 						{ this.props.tags.map(tag =>(
 							<tr >
-							<td key={tag.id}><button className="btn ing-list" onClick={this.addId} value={tag.id}
+							<td key={tag.id}><button className={
+								(this.state.isActive==tag.id) ? 
+								"btn btn-primary ing-list":
+								"btn btn-outline-primary ing-list"}
+								onClick={this.addId} value={tag.id}
 							>{tag.name}</button></td>
 						</tr>
 						)

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { login } from "../../actions/auth";
+import { login, loadUser } from "../../actions/auth";
 import { default as reducer, actions } from 'redux-csrf';
+
+import Header from "../layout/Header"
 
 
 
@@ -23,6 +25,7 @@ export class Login extends React.Component {
   static propTypes = {
     login: PropTypes.func.isRequired,
     isAuthenticated: PropTypes.bool,
+    loadUser:PropTypes.func.isRequired,
   };
 
 	onChange = e => this.setState({ [e.target.name]: e.target.value });
@@ -38,6 +41,7 @@ export class Login extends React.Component {
   		const {email, password} = this.state;
 
   		return (
+        
   			<div className="col-md-6 m-auto">
           <div className="card card-body mt-5">
             <h2 className="text-center">Login</h2>
@@ -83,4 +87,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, { login })(Login)
+export default connect(mapStateToProps, { login,loadUser })(Login)

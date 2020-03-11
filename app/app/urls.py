@@ -29,6 +29,5 @@ urlpatterns = [
     path('', user.views.home, name='home'),
     path('all_recipes/', recipe.views.all_recipes, name="all_recipes"),
     path('all_recipes/<int:recipe_id>/', recipe.views.detail, name='detail'),
-    path('create_recipe/', recipe.views.create_recipe, name="create_recipe"),
-    path('add_ingredients/',user.views.AddIngredientView.as_view(),name="add_ingredients"),
+    path('all_recipes/tags/<int:tag_id>/', recipe.views.tag_detail, name="tag_detail"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

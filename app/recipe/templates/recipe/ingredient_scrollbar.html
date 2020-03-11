@@ -1,0 +1,23 @@
+<div id="main" class="container">
+	<div class="container feature-container">
+ 		<img id="featured" src="{{recipe.image.url}}"/>
+ 		
+	</div>
+	<div class="my-custom-scrollbar">
+		<table class ="table mb-0" style="">
+			<thead class="thead">
+				<tr scope="row">
+					<th class="ing-th">Ingredients</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for ingredient in ingredients %}
+				<tr id="big-row" scope="row"><td class="ing-td">{{ingredient.amount}} {{ingredient.unit}} {{ingredient.name}}</td></tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="container recipe-stats">
+ 			<p>Cook Time: {{recipe.time}} minutes &emsp; Price: ${{recipe.price}} &emsp; Servings: {{recipe.servings}}</p>
+		</div>
+</div>

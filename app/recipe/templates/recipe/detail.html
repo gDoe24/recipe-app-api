@@ -1,27 +1,17 @@
-
 <!doctype html>
 <html lang="en">
 {% load staticfiles %}
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
+    
+    {% include 'user/head.html' %}
     <meta name="author" content="Greg">
     <meta name="generator" content="Jekyll v3.8.6">
     <title>Recipe Detail</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/blog/">
 
-  <!-- Bootstrap core CSS -->
-  <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="{%static 'css/shop-homepage.css' %}" rel="stylesheet">
   <!-- Font Awesome -->
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-
-    <!-- Bootstrap core CSS -->
-<link href="/docs/4.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- Favicons -->
 <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -35,69 +25,7 @@
 
 
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      li{
-        margin-left: 1px;
-        margin-right: 1px;
-        font-size: 1.2rem;
-        color:red;
-      }
-      .nav-link{
-        color:red;
-      }
-      #head{
-        font-size: 1.2rem;
-        color: red;
-        margin-left:10px;
-      }
-      img {
-		border: 2px groove;
-		border-radius: 4px;
-		padding: 3px;
-		
-	}
-	table{
-	}
-	td,th{
-		font-size: .9rem;
-		padding: .5rem;
-		text-align:left;
-	}
-	th{
-		border-bottom: 1px solid black;
-	}
-	tr{
-		border-bottom: 1px dashed black;
-	}
-	.my-custom-scrollbar {
-		position:relative;
-		height: 300px;
-		overflow: auto;
-		display: block;
-	}
-	@media screen and (max-width:768px){
-		.my-custom-scrollbar {
-		position:relative;
-		height: 300px;
-		overflow: auto;
-		display: block;
-		clear:left;
-		padding-top: 20px;
-		}
-	}
+      
 
 	    </style>
     <!-- Custom styles for this template -->
@@ -108,61 +36,12 @@
   <body>
     <div class="container">
   <div class="nav-scroller py-1 mb-2">
-    <nav class="navbar navbar-expand-md">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="nav-item" id="head"><a class="nav-link" href="{% url 'home' %}">Word</a>
-  </div>
-  <div class="collapse navbar-collapse justify-content-md-center" id="navbar">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link disabled" href="{% url 'all_recipes' %}">Recipes<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">myRecipes</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Vegan</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create New</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown08">
-          <a class="dropdown-item" href="#">Recipe</a>
-          <a class="dropdown-item" href="#">Category</a>
-          <a class="dropdown-item" href="#">Ingredient</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
+      {% include 'user/header.html' %}
   </div>
 <h3 class="pb-4 mb-4 font-italic border-bottom"style="padding-top: 5%">
         {{recipe.title}}
 </h3>
-<div id="main" class="container">
-	<div class="container" style="float:left;clear:right;height:297px;width:450px">
- 		<img id="featured" src="{{recipe.image.url}}"style="height: 100%;width: 100%;"/>
- 		
-	</div>
-	<div class="my-custom-scrollbar">
-		<table class ="table mb-0" style="">
-			<thead class="thead">
-				<tr scope="row">
-					<th>Ingredients</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for ingredient in ingredients %}
-				<tr scope="row"><td>{{ingredient.amount}} {{ingredient.unit}} {{ingredient.name}}</td></tr>
-				{% endfor %}
-			</tbody>
-		</table>
-	</div>
-	<div class="container" style="clear:left; padding-top: 10px">
- 			<p>Cook Time: {{recipe.time}} minutes &emsp; Price: ${{recipe.price}} &emsp; Servings: {{recipe.servings}}</p>
-		</div>
-</div>
+{% include 'recipe/ingredient_scrollbar.html' %}
 <main role="main" class="container"style="clear:left;padding-top: 100px">
   <div class="row">
     <div class="col-md-8 blog-main">

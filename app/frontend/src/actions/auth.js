@@ -29,7 +29,7 @@ export const loadUser = () => (dispatch, getState) =>{
 		});
 }
 
-export const login = (email, password) => dispatch =>{
+export const login = (email, password) => (dispatch,getState) =>{
 	
 	//Headers
 	const config = {
@@ -42,7 +42,6 @@ export const login = (email, password) => dispatch =>{
 	const body = JSON.stringify({ email, password });
 	//If token, add to headers config
 
-	
 	axios.post('/api/user/token/', body, config)
 		.then(res =>{
 			dispatch({
@@ -54,6 +53,20 @@ export const login = (email, password) => dispatch =>{
 				type:LOGIN_FAIL
 			});
 		});
+
+	setTimeout(()=>{
+		axios.get('/api/user/me', tokenConfig(getState))
+		.then(res =>{
+			dispatch({
+				type: USER_LOADED,
+				payload: res.data
+			});
+		}).catch(err=>{
+			dispatch({
+				type:AUTH_ERROR
+			});
+		});
+	},500)
 }
 
 //Create New User
@@ -82,6 +95,20 @@ export const createUser = ({ email,password,name }) => dispatch =>{
 				type:CREATE_USER_FAIL
 			});
 		});
+
+	setTimeout(()=>{
+		axios.get('/api/user/me', tokenConfig(getState))
+		.then(res =>{
+			dispatch({
+				type: USER_LOADED,
+				payload: res.data
+			});
+		}).catch(err=>{
+			dispatch({
+				type:AUTH_ERROR
+			});
+		});
+	},500)
 }
 
 //Logout

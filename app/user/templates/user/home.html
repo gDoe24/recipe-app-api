@@ -3,106 +3,80 @@
 <html lang="en">
 {% load static %}
 
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% include 'user/head.html'%}
+  <title>Recipe app</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <title>Recipe app</title>
-  </head>
- <meta name="theme-color" content="#563d7c">
 
 
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      li{
-        margin-left: 1px;
-        margin-right: 1px;
-        font-size: 1.2rem;
-        color:red;
-      }
-      .nav-link{
-        color:red;
-      }
-      #head{
-        font-size: 1.2rem;
-        color: red;
-        margin-left:10px;
-      }
       #jumbo{
         background-image:url("{% static 'cooking.jpg' %}");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        height: 70vh;
       }
-      #author{
-        font-size:1rem;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
+      #jumbo-2{
+        background-image:url("{% static 'whip-game.jpg' %}");
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="album.css" rel="stylesheet">
-  </head>
   <body>
-    {% include "user/header.html" %}
-
 <main role="main">
-
-  <section id="jumbo" class="jumbotron img-fluid text-center">
-    <div class="container">
-    	<h1 class="">Recipes Made 4 You By You
-    	</h1>
-      <div class="text-center">
-        <form class="form my-2 my-md-0" style="width:40%; margin: 0 auto; padding-top: 60px">
-      <input class="form-control" type="text" placeholder="Search">
-    	</form>
-     </div>
-    </div>
+  {% include "user/header.html" %}
+  <section id="jumbo" class="jumbotron img-fluid text-left text-white rounded bg-dark">
   </section>
 
-  <div class="album py-5 bg-light">
-  	
-
+  <div class="container pb-5">
+    <div class="row justify-content-center album-header">
+        <h1 id="cat-h-1">Choose a&nbsp</h1><h1 id="cat-h-2">Category</h1>
+    </div>
+    <div class="row">
     <div class="container">
-	Latest Recipes
+      <div class="row">
+{% for tag in tags %}
+        <div class="col-md-3">
+          <div class="card tag-card mb-4">
+            <a href="{% url 'tag_detail' tag.id %}"><img class="bd-placeholder-img tag-img card-img-top"  src="{{ tag.image.url }}" width="100%" height="225px" role="img"></a>
+            <div class="card-body tag-card-body">
+              <h1 id="tag-title"><a href="{% url 'tag_detail' tag.id %}"><strong>{{tag.name}}</strong></a></h1>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+   
+  </div>
+
+<section id="jumbo-2" class="jumbotron img-fluid rounded bg-dark">
+  </section>
+
+<div class="container album-rec ">
+  <div class="row justify-content-left album-header album-header-rec">
+        <h1 id="rec-h-1">Our&nbsp</h1><h1 id="rec-h-2">Favorites</h1>
+    </div>
+  <div class="album py-3 bg-light">
+    <div class="container">
       <div class="row">
 {% for recipe in recipes %}
         <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <a href="{% url 'detail' recipe.id %}"><img class="bd-placeholder-img card-img-top img-thumbnail"  src="{{ recipe.image.url }}" width="100%" height="225px" role="img"></a>
-            <div class="card-body">
-            	<h1 id="author"><a href="{% url 'detail' recipe.id %}"><strong>{{recipe.title}}</strong> by {{recipe.user.name}}</a></h1>
-              <p class="card-text">{{recipe.description}}</p>
+          <div class=" mb-4 ">
+            <a href="{% url 'detail' recipe.id %}"><img class="bd-placeholder-img rec-img card-img-top"  src="{{ recipe.image.url }}" width="100%" height="225px" role="img"></a>
+            <div class="rec-body mx-auto">
+            	<h1 id="author" class="pt-4 pb-1"><a href="{% url 'detail' recipe.id %}"><strong>{{recipe.title}}</strong> by {{recipe.user.name}}</a></h1>
+              <p class="rec-desc">{{recipe.description}}</p>
+              <div class="container rec-details">
+                  <p>{{recipe.time}}<i class="fas fa-stopwatch"></i> &emsp; ${{recipe.price}} &emsp; Servings: {{recipe.servings}}</p>
+              </div>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                <div class="btn-group mx-auto" >
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View Recipe</button>
                 </div>
-                <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
         </div>
         {% endfor %}
       </div>
-      
+      </div>
     </div>
   </div>
 
