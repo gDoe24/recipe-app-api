@@ -109,9 +109,7 @@ main {
   	text-align: center;
     font-size:1rem;
   }
-  .rec-img{
-	
-  }
+  
   .rec-body {
   	width:85%;
   }
@@ -189,3 +187,31 @@ main {
       font-size: 3.5rem;
     }
   }
+
+  /* Styling sortby_tags page*/
+
+  .tag-rec-img{
+    object-fit: cover;
+    height:60vh;
+    width:100%;
+  }
+  .tag-rec-title a{
+    font-size: 1.5rem;
+    color:#505050;
+  }
+  .tag-rec-details p{
+    color:#656E64;
+  }
+ .tag-rec-body{
+  color:#c50F05!important;
+ }
+ .tag-rec-desc{
+  font-size:1.1rem;
+  line-height:1.6;
+  text-align: left;
+ }
+ .tag-rec-btn{
+  padding:7px;
+  background-color: #EB5201;
+  color: white;
+ }
