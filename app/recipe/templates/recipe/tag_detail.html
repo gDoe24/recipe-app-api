@@ -6,10 +6,18 @@
 {% include 'user/head.html' %}
 
 {% include 'user/header.html' %}
+<body>
+	<div class="img-fluid justify-content-center text-white" style="margin-top:8%;
+    margin-bottom: 10%; "><img id="tag-jumbo-img" src="{% static 'dinner.jpg' %}">
+		<h1 class="tag-jumbo-title">{{tag.name}}</h1>
+	</div>
+<main>
+	
 
-
-	<h1>{{tag.name}}</h1>
+	
 	{% include 'recipe/sortby_tags.html' %}
-
+	
+</main>
+</body>
 
 

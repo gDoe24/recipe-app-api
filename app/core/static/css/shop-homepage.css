@@ -8,6 +8,9 @@
 main {
   background-color: #f5f5f5;
 }
+body{
+  background-color: #f5f5f5;
+}
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -189,14 +192,29 @@ main {
   }
 
   /* Styling sortby_tags page*/
-
+  #tag-jumbo-img{
+    width:99vw; 
+    height:30vh; 
+    object-fit: cover;
+    filter:brightness(50%);
+  }
+  .tag-jumbo-title{
+    font-family: 'Crimson Text', serif;
+    position: absolute;
+    width:200px;
+    top: 30%;
+    left:50%;
+    transform: translate(-30%,0);
+    z-index:3;
+  }
   .tag-rec-img{
     object-fit: cover;
     height:60vh;
     width:100%;
   }
   .tag-rec-title a{
-    font-size: 1.5rem;
+    font-family: 'Crimson Text', serif;
+    font-size: 1.8rem;
     color:#505050;
   }
   .tag-rec-details p{
@@ -206,6 +224,7 @@ main {
   color:#c50F05!important;
  }
  .tag-rec-desc{
+  font-family: 'Work Sans', sans-serif;
   font-size:1.1rem;
   line-height:1.6;
   text-align: left;
