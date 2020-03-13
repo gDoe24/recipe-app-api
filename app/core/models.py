@@ -55,6 +55,7 @@ class Tag(models.Model):
 		on_delete=models.CASCADE,
 		)
 	image = models.ImageField(null=True, upload_to=recipe_image_file_path)
+	image2 = models.ImageField(null=True, upload_to=recipe_image_file_path)
 	def __str__(self):
 		#String Representation returned for tag
 		return self.name

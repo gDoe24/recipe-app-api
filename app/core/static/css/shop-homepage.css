@@ -207,6 +207,10 @@ body{
     transform: translate(-30%,0);
     z-index:3;
   }
+  .tag-rec-row{
+    opacity:.5;
+    transform: translate(0,60px);
+  }
   .tag-rec-img{
     object-fit: cover;
     height:60vh;
@@ -234,3 +238,33 @@ body{
   background-color: #EB5201;
   color: white;
  }
+ #tag-sidenav {
+  position: absolute;
+  z-index: 1;
+  top: 60%;
+  left: 82%;
+  background-color:transparent;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+#tag-sidenav h1,a{
+  text-align: center;
+}
+#tag-sidenav h1{
+  font-family: 'Crimson Text', serif;
+  color:#EB5201;
+}
+#tag-sidenav a h5{
+  color:#00a4c0;
+}
+ #tag-sidenav.scrolled {
+  position: fixed;
+  z-index: 1;
+  top: 20%;
+  left: 82%;
+  background-color:transparent;
+  overflow-x: hidden;
+  padding: 8px 0;
+  transition:.5;
+  text-align: center;
+}

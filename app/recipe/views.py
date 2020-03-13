@@ -125,7 +125,9 @@ def all_recipes(request):
 	return render(request, 'recipe/all_recipes.html',{'recipes':recipe, 'tags':tag, 'ingredients':ingredient})
 
 def tag_detail(request,tag_id):
+
 	tag = get_object_or_404(Tag, pk=tag_id)
+	tags = Tag.objects.all()
 	recipe = Recipe.objects.filter(tags=tag_id)
-	return render(request, 'recipe/tag_detail.html',{'tag':tag,'recipes':recipe})
+	return render(request, 'recipe/tag_detail.html',{'tag':tag,'recipes':recipe,'tags':tags})
 
