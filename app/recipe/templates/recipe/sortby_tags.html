@@ -25,7 +25,7 @@
             </div>
 
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group " >
+                <div class="btn-group pb-2 " >
                   <button type="button" class="btn btn-sm tag-rec-btn">View Recipe</button>
                 </div>
               </div>
@@ -37,16 +37,16 @@
          <div class="row tag-rec-row col-12 justify-content-start">
             <div class="col-md-5 tag-rec-body px-5 mt-2">
               <div class="row">
-              <h1 class="pt-4 tag-rec-title"><a href="{% url 'detail' recipe.id %}"><strong>{{recipe.title}}</strong></a></h1>
+              <h1 class="pt-2 tag-rec-title"><a href="{% url 'detail' recipe.id %}"><strong>{{recipe.title}}</strong></a></h1>
             </div>
               <div class="row tag-rec-details">
                   <p>{{recipe.time}}<i class="fas fa-stopwatch"></i> &emsp; ${{recipe.price}} &emsp; Servings: {{recipe.servings}}</p>
               </div>
               <div class="row">
-              <p class="tag-rec-desc pt-3 pb-2">{{recipe.description}}</p>
+              <p class="tag-rec-desc pt-2 pb-2">{{recipe.description}}</p>
             </div>
               <div class="d-flex justify-content-end">
-                <div class="btn-group" >
+                <div class="btn-group pb-2" >
                   <button type="button" class="btn btn-sm tag-rec-btn">View Recipe</button>
                 </div>
               </div>

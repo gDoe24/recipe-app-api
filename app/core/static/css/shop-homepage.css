@@ -101,6 +101,9 @@ body{
 .album-rec{
 	padding-bottom:15%;
 }
+  .rec-img{
+    object-fit: cover;
+  }
   #rec-h-1{
   	margin-left:5%;
 	color:#C50F0F;
@@ -208,7 +211,7 @@ body{
     z-index:3;
   }
   .tag-rec-row{
-    opacity:.5;
+    opacity:0;
     transform: translate(0,60px);
   }
   .tag-rec-img{
