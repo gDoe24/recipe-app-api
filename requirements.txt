@@ -9,3 +9,4 @@ ez_setup
 cryptography
 django-rest-knox
 django-filter
+fontawesome
