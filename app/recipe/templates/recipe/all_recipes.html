@@ -19,7 +19,9 @@
   {% include "user/header.html" %}
   <!-- Page Content -->
   <div class="container" style="padding-top: 8%">
-
+  <div class="row justify-content-center">
+    <h1 id="all-title" class="my-4 ml-5">All Recipes</h1>
+  </div>
     <div class="row">
 
   <!-- Side Nav -->
@@ -45,12 +47,27 @@
           <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
               <img class="d-block img-fluid" src="{{ recipes.0.image.url }}" style="object-fit: cover; width:100%;height:55vh"alt="First slide">
+              <div class="carousel-caption d-none d-md-block mx-auto">
+                <p class="mb-0">{{tags.2.name}}</p>
+                <h3 class="mt-0 pb-2">{{recipes.0.title}}</h3>
+                <button class="btn learn-more">Learn More</button>
+              </div>
             </div>
             <div class="carousel-item">
               <img class="d-block img-fluid" src="{{ recipes.1.image.url }}" style="object-fit: cover; width:100%;height:55vh" alt="Second slide">
+              <div class="carousel-caption d-none d-md-block mx-auto">
+                <p class="mb-0">{{tags.0.name}}</p>
+                  <h3 class="mt-0 pb-2">{{recipes.1.title}}</h3>
+                  <button class="btn learn-more">Learn More</button>
+                </div>
             </div>
             <div class="carousel-item">
               <img class="d-block img-fluid" src="{{ recipes.2.image.url }}" style="object-fit: cover; width:100%;height:55vh" alt="Third slide">
+              <div class="carousel-caption d-none d-md-block mx-auto">
+                <p class="mb-0">{{tags.1.name}}</p>
+                <h3 class="mt-0 pb-2">{{recipes.2.title}}</h3>
+                <button class="btn learn-more">Learn More</button>
+              </div>
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
