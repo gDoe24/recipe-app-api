@@ -6,9 +6,6 @@ import IngredientForm from './IngredientForm';
 import Tags from "./Tags";
 
 
-const list=[1,2,3];
-
-
 export class Form extends Component {
 
   
@@ -20,11 +17,12 @@ constructor(){
     time: '2',
     price: '4',
     servings: '8',
-    ingredients: [],
-    tags: [],
+    ingredients: [184,],
+    tags:[1,],
+    description:'A dish best served cold',
+    methods:'Step 1: x \n Step 2: y',
     link: "",
     ingNames:" ",
-    count:1,
   };
 
   this.changeState = this.changeState.bind(this);
@@ -47,8 +45,10 @@ constructor(){
 
 	onSubmit = e => {
 		e.preventDefault();
-		const { title, time, price, servings, ingredients, tags, link } = this.state;
-		const recipe = { title, time, price, servings, ingredients, tags, link };
+		const { title, time, price, servings, ingredients, tags, 
+      description, methods, link } = this.state;
+		const recipe = { title, time, price, servings, ingredients, tags,
+      description, methods, link };
 		this.props.addRecipe(recipe);
 	}
 
@@ -64,21 +64,18 @@ constructor(){
           return a.id
         }).sort(this.sortFunction)[0] + 1
       )
-    }),
-    this.setState(prevState =>({
-          count: prevState.count + 1
-        })),
-    console.log(this.state.count)
+    })
   }
 
   getId = (value) =>{
     this.setState({
-      tags: value
+      tags: [value]
     })
   }
   
 	 render() {
-    const { title, time, price, servings, ingredients,ingNames, tags } = this.state;
+    const { title, time, price, servings, ingredients,ingNames, tags, description,
+    methods } = this.state;
       
     return (
       <div className="container form-container">
@@ -126,6 +123,27 @@ constructor(){
             />
           </div>
           <div className="form-group">
+            <label >Description</label>
+            <textarea className="form-control" 
+            id="exampleFormControlTextarea1" 
+            rows="3"
+            name="description"
+            onChange={this.onChange}
+            value={description}>
+            </textarea>
+          </div>
+          <div className="form-group">
+            <label >Methods</label>
+            <textarea className="form-control" 
+            id="exampleFormControlTextarea1" 
+            rows="5"
+            name="methods"
+            onChange={this.onChange}
+            value={methods}>
+            </textarea>
+          </div>
+
+          <div className="form-group">
           <label>Ingredients</label>
             <pre
             name="ingredients">
@@ -135,7 +153,13 @@ constructor(){
           <div className="form-group">
             <IngredientForm action={this.changeState} ingredients={ingredients}/>
           </div>
-        <Tags action={this.getId}/>
+          <div className="form-group">
+            <Tags action={this.getId}/>
+          </div>
+           <div class="form-group">
+            <label for="exampleFormControlFile1">Example file input</label>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" />
+          </div>
           <div className="form-group">
             <button type="submit" onClick = {this.onSubmit} className="btn btn-primary">
               Submit

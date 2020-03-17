@@ -57,14 +57,15 @@ export class Header extends Component {
         <Link className="nav-link" to="/my_recipes">myRecipes</Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link " href="#" tabindex="-1" aria-disabled="true">Vegan</a>
+        <Link className="nav-link" to="/my_recipes">Create</Link>
       </li>
       <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="#" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create New</a>
+        <a className="nav-link dropdown-toggle" href="#" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
         <div className="dropdown-menu" aria-labelledby="dropdown08">
-          <a className="dropdown-item" href="#">Recipe</a>
-          <a className="dropdown-item" href="#">Category</a>
-          <a className="dropdown-item" href="#">Ingredient</a>
+          <a className="dropdown-item" href="#">Breakfast</a>
+          <a className="dropdown-item" href="#">Lunch</a>
+          <a className="dropdown-item" href="#">Dinner</a>
+          <a className="dropdown-item" href="#">Vegan</a>
         </div>
       </li>
       { isAuthenticated ? authLinks : guestLinks }
