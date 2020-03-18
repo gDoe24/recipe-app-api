@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import uuid from 'react-uuid'
 import { addRecipe, getIngredients } from "../../actions/recipes.js";
 import IngredientForm from './IngredientForm';
 import Tags from "./Tags";
@@ -21,6 +22,7 @@ constructor(){
     tags:[1,],
     description:'A dish best served cold',
     methods:'Step 1: x \n Step 2: y',
+    image: '',
     link: "",
     ingNames:" ",
   };
@@ -46,9 +48,9 @@ constructor(){
 	onSubmit = e => {
 		e.preventDefault();
 		const { title, time, price, servings, ingredients, tags, 
-      description, methods, link } = this.state;
+      description, methods, image, link } = this.state;
 		const recipe = { title, time, price, servings, ingredients, tags,
-      description, methods, link };
+      description, methods, image, link };
 		this.props.addRecipe(recipe);
 	}
 
@@ -72,10 +74,16 @@ constructor(){
       tags: [value]
     })
   }
+
+  imageChange = e =>{
+    this.setState({
+      image: e.target.files[0]
+    })
+  }
   
 	 render() {
     const { title, time, price, servings, ingredients,ingNames, tags, description,
-    methods } = this.state;
+    methods, image } = this.state;
       
     return (
       <div className="container form-container">
@@ -157,8 +165,13 @@ constructor(){
             <Tags action={this.getId}/>
           </div>
            <div class="form-group">
-            <label for="exampleFormControlFile1">Example file input</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1" />
+            <label>Image</label>
+            <input type="file"
+            className="form-control-file"
+            id="image"
+            name="image"
+            onChange={this.imageChange}
+            />
           </div>
           <div className="form-group">
             <button type="submit" onClick = {this.onSubmit} className="btn btn-primary">
