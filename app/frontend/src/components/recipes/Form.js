@@ -23,7 +23,6 @@ constructor(){
     description:'A dish best served cold',
     methods:'Step 1: x \n Step 2: y',
     image: '',
-    link: "",
     ingNames:" ",
   };
 
@@ -48,9 +47,17 @@ constructor(){
 	onSubmit = e => {
 		e.preventDefault();
 		const { title, time, price, servings, ingredients, tags, 
-      description, methods, image, link } = this.state;
-		const recipe = { title, time, price, servings, ingredients, tags,
-      description, methods, image, link };
+      description, methods, image } = this.state;
+		const recipe = new FormData();
+    recipe.append('title',title);
+    recipe.append('time',time);
+    recipe.append('price',price);
+    recipe.append('servings',servings);
+    recipe.append('ingredients',ingredients);
+    recipe.append('tags',tags);
+    recipe.append('description',description);
+    recipe.append('methods',methods);
+    recipe.append('image',image);
 		this.props.addRecipe(recipe);
 	}
 
@@ -164,9 +171,10 @@ constructor(){
           <div className="form-group">
             <Tags action={this.getId}/>
           </div>
-           <div class="form-group">
+           <div className="form-group">
             <label>Image</label>
-            <input type="file"
+            <input 
+            type="file"
             className="form-control-file"
             id="image"
             name="image"

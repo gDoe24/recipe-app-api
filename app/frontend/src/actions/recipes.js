@@ -29,7 +29,11 @@
  //Add Recipe
 
   export const addRecipe = (recipe) => (dispatch, getState) =>{
-	axios.post('/api/recipe/recipes/', recipe, tokenConfig(getState))
+	axios.post('/api/recipe/recipes/', recipe,tokenConfig(getState), {
+		headers: {
+			'content-type':'multipart/form-data'
+		}
+	})
 		.then(res => {
 			dispatch({
 				type: ADD_RECIPE,
