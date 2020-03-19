@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import uuid from 'react-uuid'
 import { addRecipe, getIngredients } from "../../actions/recipes.js";
 import IngredientForm from './IngredientForm';
 import Tags from "./Tags";
-
-
-const list=[1,2,3];
 
 
 export class Form extends Component {
@@ -20,11 +18,12 @@ constructor(){
     time: '2',
     price: '4',
     servings: '8',
-    ingredients: [],
-    tags: [],
-    link: "",
+    ingredients: [184,],
+    tags:[1,],
+    description:'A dish best served cold',
+    methods:'Step 1: x \n Step 2: y',
+    image: '',
     ingNames:" ",
-    count:1,
   };
 
   this.changeState = this.changeState.bind(this);
@@ -47,8 +46,18 @@ constructor(){
 
 	onSubmit = e => {
 		e.preventDefault();
-		const { title, time, price, servings, ingredients, tags, link } = this.state;
-		const recipe = { title, time, price, servings, ingredients, tags, link };
+		const { title, time, price, servings, ingredients, tags, 
+      description, methods, image } = this.state;
+		const recipe = new FormData();
+    recipe.append('title',title);
+    recipe.append('time',time);
+    recipe.append('price',price);
+    recipe.append('servings',servings);
+    recipe.append('ingredients',ingredients);
+    recipe.append('tags',tags);
+    recipe.append('description',description);
+    recipe.append('methods',methods);
+    recipe.append('image',image);
 		this.props.addRecipe(recipe);
 	}
 
@@ -64,21 +73,24 @@ constructor(){
           return a.id
         }).sort(this.sortFunction)[0] + 1
       )
-    }),
-    this.setState(prevState =>({
-          count: prevState.count + 1
-        })),
-    console.log(this.state.count)
+    })
   }
 
   getId = (value) =>{
     this.setState({
-      tags: value
+      tags: [value]
+    })
+  }
+
+  imageChange = e =>{
+    this.setState({
+      image: e.target.files[0]
     })
   }
   
 	 render() {
-    const { title, time, price, servings, ingredients,ingNames, tags } = this.state;
+    const { title, time, price, servings, ingredients,ingNames, tags, description,
+    methods, image } = this.state;
       
     return (
       <div className="container form-container">
@@ -126,6 +138,27 @@ constructor(){
             />
           </div>
           <div className="form-group">
+            <label >Description</label>
+            <textarea className="form-control" 
+            id="exampleFormControlTextarea1" 
+            rows="3"
+            name="description"
+            onChange={this.onChange}
+            value={description}>
+            </textarea>
+          </div>
+          <div className="form-group">
+            <label >Methods</label>
+            <textarea className="form-control" 
+            id="exampleFormControlTextarea1" 
+            rows="5"
+            name="methods"
+            onChange={this.onChange}
+            value={methods}>
+            </textarea>
+          </div>
+
+          <div className="form-group">
           <label>Ingredients</label>
             <pre
             name="ingredients">
@@ -135,7 +168,19 @@ constructor(){
           <div className="form-group">
             <IngredientForm action={this.changeState} ingredients={ingredients}/>
           </div>
-        <Tags action={this.getId}/>
+          <div className="form-group">
+            <Tags action={this.getId}/>
+          </div>
+           <div className="form-group">
+            <label>Image</label>
+            <input 
+            type="file"
+            className="form-control-file"
+            id="image"
+            name="image"
+            onChange={this.imageChange}
+            />
+          </div>
           <div className="form-group">
             <button type="submit" onClick = {this.onSubmit} className="btn btn-primary">
               Submit

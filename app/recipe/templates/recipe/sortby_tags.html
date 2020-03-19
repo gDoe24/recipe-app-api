@@ -1,29 +1,61 @@
 
 
-<div class="container album-rec ">
-<div class="album py-3 bg-light">
-    <div class="container">
-      <div class="row">
+
+
+    <div class="container-fluid bg-transparent" >
+
 {% for recipe in recipes %}
-        <div class="col-md-4">
-          <div class=" mb-4 ">
-            <a href="{% url 'detail' recipe.id %}"><img class="bd-placeholder-img rec-img card-img-top"  src="{{ recipe.image.url }}" width="100%" height="225px" role="img"></a>
-            <div class="rec-body mx-auto">
-            	<h1 id="author" class="pt-4 pb-1"><a href="{% url 'detail' recipe.id %}"><strong>{{recipe.title}}</strong> by {{recipe.user.name}}</a></h1>
-              <p class="rec-desc">{{recipe.description}}</p>
-              <div class="container rec-details">
+  {% if forloop.counter0|divisibleby:2 %}
+      <div class="row tag-rec-row col-12 justify-content-start">
+          <div class="col-md-5 p-0">
+            <a href="{% url 'detail' recipe.id %}"><img class="bd-placeholder-img tag-rec-img card-img-top"  src="{{ recipe.image.url }}" width="100%" role="img"></a>
+          </div>
+
+            <div class="col-md-5 px-5 tag-rec-body">
+              <div class="row">
+            	<h1 class="pt-2 tag-rec-title"><a href="{% url 'detail' recipe.id %}"><strong>{{recipe.title}}</strong></a></h1>
+            </div>
+
+              <div class="row tag-rec-details">
                   <p>{{recipe.time}}<i class="fas fa-stopwatch"></i> &emsp; ${{recipe.price}} &emsp; Servings: {{recipe.servings}}</p>
               </div>
+
+              <div class="row">
+              <p class="tag-rec-desc pt-2 pb-2">{{recipe.description}}</p>
+            </div>
+
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group mx-auto" >
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View Recipe</button>
+                <div class="btn-group pb-2 " >
+                  <button type="button" class="btn btn-sm tag-rec-btn">View Recipe</button>
+                </div>
+              </div>
+
+            </div>
+
+      </div>
+        {% else %}
+         <div class="row tag-rec-row col-12 justify-content-start">
+            <div class="col-md-5 tag-rec-body px-5 mt-2">
+              <div class="row">
+              <h1 class="pt-2 tag-rec-title"><a href="{% url 'detail' recipe.id %}"><strong>{{recipe.title}}</strong></a></h1>
+            </div>
+              <div class="row tag-rec-details">
+                  <p>{{recipe.time}}<i class="fas fa-stopwatch"></i> &emsp; ${{recipe.price}} &emsp; Servings: {{recipe.servings}}</p>
+              </div>
+              <div class="row">
+              <p class="tag-rec-desc pt-2 pb-2">{{recipe.description}}</p>
+            </div>
+              <div class="d-flex justify-content-end">
+                <div class="btn-group pb-2" >
+                  <button type="button" class="btn btn-sm tag-rec-btn">View Recipe</button>
                 </div>
               </div>
             </div>
+            <div class="col-md-5 p-0" style="">
+            <a href="{% url 'detail' recipe.id %}"><img class="bd-placeholder-img tag-rec-img card-img-top"  src="{{ recipe.image.url }}" width="100%" role="img"></a>
           </div>
-        </div>
+      </div>
+        {% endif %}
         {% endfor %}
       </div>
-      </div>
-    </div>
-</div>
+    

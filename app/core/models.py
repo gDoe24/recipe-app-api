@@ -55,6 +55,7 @@ class Tag(models.Model):
 		on_delete=models.CASCADE,
 		)
 	image = models.ImageField(null=True, upload_to=recipe_image_file_path)
+	image2 = models.ImageField(null=True, upload_to=recipe_image_file_path)
 	def __str__(self):
 		#String Representation returned for tag
 		return self.name
@@ -92,9 +93,10 @@ class Recipe(models.Model):
 	link = models.URLField(max_length=200, blank=True)
 	ingredients = models.ManyToManyField('Ingredient')
 	tags = models.ManyToManyField('Tag')
-	description = models.TextField(null=True)
+	description = models.TextField(default="A dish best served cold",max_length=255)
 	methods = models.TextField(default="Step 1: x")
-	image = models.ImageField(null=True, upload_to=recipe_image_file_path)
+	image = models.ImageField(default="http://127.0.0.1:8000/media/uploads/recipe/5e2a3dfb-2daf-41ab-94b4-899b2c8d8403.jpg",
+	 upload_to=recipe_image_file_path)
 
 	def __str__(self):
 		return self.title

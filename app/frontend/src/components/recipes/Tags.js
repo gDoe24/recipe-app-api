@@ -9,7 +9,7 @@ export class Tags extends Component{
 	constructor() {
 		super();
 		this.state = {
-			isActive:null,
+			isActive:0,
 		}
 	}
 	static propType = {

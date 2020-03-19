@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets, mixins, status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.parsers import MultiPartParser, FormParser
 
 from core.models import Tag, Ingredient, Recipe
 
@@ -50,7 +51,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
 	#Manage the recipes
 	serializer_class = serializers.RecipeSerializer
 	queryset = Recipe.objects.all()
-
+	parser_classes = (MultiPartParser, FormParser)
 	authentication_classes = (TokenAuthentication,)
 	permission_classes = (IsAuthenticated,)
 
@@ -104,8 +105,6 @@ class RecipeViewSet(viewsets.ModelViewSet):
 			status=status.HTTP_400_BAD_REQUEST
 		)
 
-def create_recipe(request):
-	return render(request,'recipe/create_recipe.html')
 
 def detail(request,recipe_id):
 	recipe = get_object_or_404(Recipe, pk=recipe_id)
@@ -125,7 +124,9 @@ def all_recipes(request):
 	return render(request, 'recipe/all_recipes.html',{'recipes':recipe, 'tags':tag, 'ingredients':ingredient})
 
 def tag_detail(request,tag_id):
+
 	tag = get_object_or_404(Tag, pk=tag_id)
+	tags = Tag.objects.all()
 	recipe = Recipe.objects.filter(tags=tag_id)
-	return render(request, 'recipe/tag_detail.html',{'tag':tag,'recipes':recipe})
+	return render(request, 'recipe/tag_detail.html',{'tag':tag,'recipes':recipe,'tags':tags})
 
