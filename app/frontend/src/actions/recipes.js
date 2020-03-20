@@ -31,7 +31,7 @@
   export const addRecipe = (recipe) => (dispatch, getState) =>{
 	axios.post('/api/recipe/recipes/', recipe,tokenConfig(getState), {
 		headers: {
-			'content-type':'multipart/form-data'
+			'content-type':'application/json'
 		}
 	})
 		.then(res => {

@@ -9,7 +9,7 @@ export class Tags extends Component{
 	constructor() {
 		super();
 		this.state = {
-			isActive:0,
+			isActive:null,
 		}
 	}
 	static propType = {
@@ -31,21 +31,22 @@ export class Tags extends Component{
 		
 		return(
 			<Fragment>
-				<label>Tags</label>
-				<div className="my-custom-scrollbar">
-				<table className ="table mb-0" style={{width: 150 + 'px', text_align: 'left'}}>
+				<div className="tag-list">
+				<table className ="table mb-0" >
 					<tbody>
+					<tr >
 						{ this.props.tags.map(tag =>(
-							<tr >
+							
 							<td key={tag.id}><button className={
 								(this.state.isActive==tag.id) ? 
 								"btn btn-primary ing-list":
 								"btn btn-outline-primary ing-list"}
 								onClick={this.addId} value={tag.id}
 							>{tag.name}</button></td>
-						</tr>
+						
 						)
 					)}
+						</tr>
 					</tbody>
 				</table>
 				</div>
