@@ -21,7 +21,7 @@ constructor(){
     ingredients: [166],
     tags:[],
     description:'A dish best served cold',
-    methods:'',
+    methods:'Step 1: x\nStep 2: y',
     image: '',
     ingNames:" ",
   };

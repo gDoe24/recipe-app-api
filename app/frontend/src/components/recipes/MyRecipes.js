@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getRecipes, deleteRecipe } from "../../actions/recipes.js";
-import Header from "../layout/Header"
+import Header from "../layout/Header";
 import '../../../../core/static/css/frontend.css';
 
 export class MyRecipes extends Component {
@@ -23,6 +23,7 @@ export class MyRecipes extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const authRecipes = (
+      
       <div>
         <h2>{ user ? `${user.name}'s Recipes`: ''}</h2>
         <table className="table table-striped">
@@ -30,7 +31,7 @@ export class MyRecipes extends Component {
           <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Time</th>
+            <th>Time (min)</th>
             <th>Servings</th>
             <th>Price</th>
             <th />
@@ -40,10 +41,10 @@ export class MyRecipes extends Component {
           { this.props.recipes.map(recipe =>(
               <tr key={recipe.id}>
               <td>{recipe.id}</td>
-              <td>{recipe.title}</td>
+              <td><a href={`../../all_recipes/${recipe.id}`}>{recipe.title}</a></td>
               <td>{recipe.time}</td>
               <td>{recipe.servings}</td>
-              <td>{recipe.price}</td>
+              <td>${recipe.price}</td>
               <td><button onClick={this.props.deleteRecipe.bind(this,recipe.id)} 
               className="btn btn-danger btn-sm">Delete</button></td>
             </tr>

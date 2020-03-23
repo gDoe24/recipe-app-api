@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout, loadUser } from "../../actions/auth";
-import '../../../../core/static/css/frontend.css';
+import Head from "./Head";
+import '../../../../core/static/css/shop-homepage.css';
 
 export class Header extends Component {
 
@@ -41,6 +42,8 @@ export class Header extends Component {
     
 
     return (
+      <Fragment>
+        <Head />
       <header>
 		<nav className="navbar navbar-expand-md fixed-top" >
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,10 +65,10 @@ export class Header extends Component {
       <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" href="#" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
         <div className="dropdown-menu" aria-labelledby="dropdown08">
-          <a className="dropdown-item" href="#">Breakfast</a>
-          <a className="dropdown-item" href="#">Lunch</a>
-          <a className="dropdown-item" href="#">Dinner</a>
-          <a className="dropdown-item" href="#">Vegan</a>
+          <a className="dropdown-item" href={`../../all_recipes/tags/${3}`}>Breakfast</a>
+          <a className="dropdown-item" href={`../../all_recipes/tags/${4}`}>Lunch</a>
+          <a className="dropdown-item" href={`../../all_recipes/tags/${1}`}>Dinner</a>
+          <a className="dropdown-item" href={`../../all_recipes/tags/${2}`}>Vegan</a>
         </div>
       </li>
       { isAuthenticated ? authLinks : guestLinks }
@@ -73,6 +76,7 @@ export class Header extends Component {
   </div>
 </nav>
 </header>
+</Fragment>
     )
   }
 }
