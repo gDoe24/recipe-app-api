@@ -18,10 +18,10 @@ constructor(){
     time: '2',
     price: '4',
     servings: '8',
-    ingredients: [184,],
-    tags:[1,],
+    ingredients: [166],
+    tags:[],
     description:'A dish best served cold',
-    methods:'Step 1: x \n Step 2: y',
+    methods:'Step 1: x\nStep 2: y',
     image: '',
     ingNames:" ",
   };
@@ -53,12 +53,17 @@ constructor(){
     recipe.append('time',time);
     recipe.append('price',price);
     recipe.append('servings',servings);
-    recipe.append('ingredients',ingredients);
     recipe.append('tags',tags);
     recipe.append('description',description);
     recipe.append('methods',methods);
     recipe.append('image',image);
+    for (let i in ingredients){
+      recipe.append('ingredients', ingredients[i])
+    }
 		this.props.addRecipe(recipe);
+    setTimeout(()=>{
+      window.location.reload(true);
+    },500)
 	}
 
 
@@ -97,6 +102,10 @@ constructor(){
       <div className="card card-body mt-4 mb-4">
         <h2>Add Recipe</h2>
         <form >
+        <div className="form-group">
+        <h4>Tags</h4>
+            <Tags action={this.getId}/>
+          </div>
           <div className="form-group">
             <label>Title</label>
             <input
@@ -168,9 +177,7 @@ constructor(){
           <div className="form-group">
             <IngredientForm action={this.changeState} ingredients={ingredients}/>
           </div>
-          <div className="form-group">
-            <Tags action={this.getId}/>
-          </div>
+          
            <div className="form-group">
             <label>Image</label>
             <input 

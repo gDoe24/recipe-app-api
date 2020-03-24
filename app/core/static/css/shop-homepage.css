@@ -3,8 +3,6 @@
  * Copyright 2013-2019 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/LICENSE)
  */
-
- {% load static %}
 main {
   background-color: #f5f5f5;
 }
@@ -52,6 +50,15 @@ body{
     height: 95vh;
     position:relative;
     margin-bottom: 0;
+    animation: fade 2s linear forwards;
+  }
+  @keyframes fade{
+    0%{ filter: sepia(0%);
+        filter: grayscale(0%); 
+      }
+    100%{ filter: sepia(60%);
+          filter: grayscale(60%); 
+      }
   }
   #jumbo-2{
     background-attachment: fixed;
@@ -146,8 +153,7 @@ body{
 
     /* RECIPE DETAIL STYLING */
     .feature-container{
-      float:left;
-      clear:right;
+      
       height:297px;width:450px
     }
     #featured {
@@ -174,6 +180,11 @@ body{
     overflow: auto;
     display: block;
   }
+  .tag-list{
+    width:70%;
+    display:inline-block;
+    position:relative;
+    height: 100px;  }
   .recipe-stats{
     clear:left; 
     padding-top: 10px
@@ -259,6 +270,24 @@ body{
   background-color:transparent;
   overflow-x: hidden;
   padding: 8px 0;
+  transition:.5;
+  text-align: center;
+}
+ #detail-sidenav {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left:73%;
+  overflow-x: hidden;
+}
+
+#detail-sidenav.scrolled{
+  position: fixed;
+  z-index: 1;
+  top: 20%;
+  left: 73%;
+  background-color:transparent;
+  overflow-x: hidden;
   transition:.5;
   text-align: center;
 }
