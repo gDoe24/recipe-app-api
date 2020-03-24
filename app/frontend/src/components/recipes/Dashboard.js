@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Form from "./Form";
+import MyRecipes from "./MyRecipes";
 import Header from "../layout/Header";
 
 export default function Dashboard() {
@@ -7,7 +7,7 @@ export default function Dashboard() {
     <Fragment>
     <Header />
     <div className="container">
-      <Form />
+      <MyRecipes/>
       </div>
     </Fragment>
   );
