@@ -6,6 +6,8 @@ import { getRecipes, deleteRecipe } from "../../actions/recipes.js";
 import Header from "../layout/Header";
 import '../../../../core/static/css/frontend.css';
 
+import '../../../../core/static/css/shop-homepage.css';
+
 export class MyRecipes extends Component {
 
  static propTypes = {

@@ -12,7 +12,7 @@ import Register from "./users/Register";
 import PrivateRoute from "./common/PrivateRoute";
 import MyRecipes from "./recipes/MyRecipes";
 import Form from "./recipes/Form";
-import '../../../core/static/css/frontend.css';
+import '../../../core/static/css/shop-homepage.css';
 
 class App extends Component {
 
