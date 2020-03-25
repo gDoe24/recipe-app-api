@@ -60,7 +60,7 @@ export class Header extends Component {
         <Link className="nav-link" to="/my_recipes">myRecipes</Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/">Create</Link>
+        <Link className="nav-link" to="/create_recipe">Create</Link>
       </li>
       <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" href="#" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>

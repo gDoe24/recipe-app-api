@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import uuid from 'react-uuid'
 import { addRecipe, getIngredients } from "../../actions/recipes.js";
 import IngredientForm from './IngredientForm';
 import Tags from "./Tags";
+import Header from "../layout/Header";
 
 
 export class Form extends Component {
@@ -98,6 +99,8 @@ constructor(){
     methods, image } = this.state;
       
     return (
+      <Fragment>
+        <Header />
       <div className="container form-container">
       <div className="card card-body mt-4 mb-4">
         <h2>Add Recipe</h2>
@@ -196,6 +199,7 @@ constructor(){
         </form>
       </div>
       </div>
+      </Fragment>
     );
   }
 }

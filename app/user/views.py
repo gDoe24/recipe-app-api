@@ -17,8 +17,6 @@ import json
 
 from django.http import Http404, HttpResponse
 
-from user.forms import AddIngredientForm
-
 class CreateUserView(generics.CreateAPIView):
 	#Create a new user
 	serializer_class=UserSerializer
@@ -88,21 +86,3 @@ def home(request):
 
 	return render(request, 'user/home.html', {'recipes':recipe, 'tags':tag})
 
-
-class AddIngredientView(TemplateView):
-	template_name= "user/add_ingredients.html"
-
-	def get(self,request):
-		form=AddIngredientForm()
-		return render(request,"user/add_ingredients.html", {'form':form})
-
-	def post(self, request):
-		form=AddIngredientForm(request.POST)
-		if form.is_valid():
-			ingredient = form.save(commit=False)
-			form = AddIngredientForm()
-			ingredient.user = request.user
-			ingredient.save()
-
-		args = {'form':form, 'text':text}
-		return render(request, self.template_name,args)

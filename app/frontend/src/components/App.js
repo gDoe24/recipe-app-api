@@ -11,7 +11,8 @@ import Login from "./users/Login";
 import Register from "./users/Register";
 import PrivateRoute from "./common/PrivateRoute";
 import MyRecipes from "./recipes/MyRecipes";
-import '../../../core/static/css/frontend.css';
+import Form from "./recipes/Form";
+import '../../../core/static/css/shop-homepage.css';
 
 class App extends Component {
 
@@ -34,6 +35,8 @@ class App extends Component {
 								{Login} />
 								<Route exact path="/my_recipes" component=
 								{MyRecipes} />
+								<Route exact path="/create_recipe" component=
+								{Form} />
 							</Switch>
 						</div>
 					</Fragment>

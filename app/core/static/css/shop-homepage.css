@@ -291,6 +291,12 @@ body{
   transition:.5;
   text-align: center;
 }
+#detail-sidenav.stick{
+  position: absolute;
+  top:475px;
+  left:73%;
+  overflow-x: hidden;
+}
 
 /* Styling for All_recipes page */
   .sidenav{
@@ -326,4 +332,12 @@ body{
     background-color:#EB5201;
     color:white;
     border-radius:0 0 0 0;
+  }
+
+  footer{
+    background-color: #4B515D;
+    color:white;
+  }
+  footer a{
+    color:#ff4444;
   }
