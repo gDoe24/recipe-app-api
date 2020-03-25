@@ -42,12 +42,21 @@
 
 	<script>
 		$(document).ready(function(){
+
 			
 			$(window).scroll(()=>{
 				
-				$("#tag-sidenav").toggleClass('scrolled', $(this).scrollTop()>200)
+				console.log($(window).scrollTop());
+				console.log($(".page-footer").offset().top);
+
+				if (($(window).scrollTop() < ($(".page-footer").offset().top - 450) && 
+					($(window).scrollTop()>200))){
+					$("#tag-sidenav").addClass('scrolled');
+				}
+				else{
+					$("#tag-sidenav").removeClass('scrolled')
+				}
 			
-	
        			 $('.tag-rec-row').each(function(i){
             
 	            var bottom_of_element = $(this).offset().top + $(this).outerHeight();

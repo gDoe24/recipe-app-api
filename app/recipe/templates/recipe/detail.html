@@ -63,11 +63,20 @@
     
   <script>
     $(document).ready(function(){
+
+      var $this = $(this);
+      var $detailSide = $("#detail-sidenav");
       
+
       $(window).scroll(()=>{
-        
-        $("#detail-sidenav").toggleClass('scrolled', $(this).scrollTop()>170);
-      
+
+        if (($this.scrollTop() >170) && ($this.scrollTop() <475)){
+            $detailSide.addClass('scrolled');
+           }
+       
+        else {
+            $detailSide.removeClass('scrolled');
+        }
       });
     })
   </script>
