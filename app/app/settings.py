@@ -159,3 +159,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = '/vol/web/media/'
 STATIC_ROOT = '/vol/web/static/'
 AUTH_USER_MODEL = 'core.User'
+
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
