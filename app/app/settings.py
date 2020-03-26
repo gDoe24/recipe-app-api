@@ -45,11 +45,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'django_extensions',
     'rest_framework.authtoken',
     'core',
     'user',
     'recipe',
     'frontend',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -135,10 +137,10 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
+    
 }
 
 # JSON Web Token authorization
@@ -157,3 +159,9 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = '/vol/web/media/'
 STATIC_ROOT = '/vol/web/static/'
 AUTH_USER_MODEL = 'core.User'
+
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
