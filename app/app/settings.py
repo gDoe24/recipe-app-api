@@ -25,7 +25,7 @@ SECRET_KEY = '2hxb@=frl^_!8#g*7v(m$f@zau5h7)gsh!isf_b#zkuwgm_27q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# SECURITY WARNING: update this before going into production!
+# SECURITY WARNING: update this before going dinto production!
 ALLOWED_HOSTS = [
     '0.0.0.0',
     'localhost',
@@ -162,6 +162,6 @@ AUTH_USER_MODEL = 'core.User'
 
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except ImportError:
     pass
