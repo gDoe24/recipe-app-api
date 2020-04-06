@@ -1,0 +1,33 @@
+
+<header style="background-color: white!important">
+  <nav class="navbar navbar-expand-md  fixed-top" style="">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="nav-item" id="head"><a class="nav-link" href="{% url 'home' %}">Word</a>
+  </div>
+</li>
+  <div class="collapse navbar-collapse justify-content-md-center" id="navbar">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'all_recipes' %}">Recipes<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'frontend:index' %}">myRecipes</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+        <div class="dropdown-menu" aria-labelledby="dropdown08">
+          <a class="dropdown-item" href="{% url 'tag_detail' 2 %}">Vegan</a>
+          <a class="dropdown-item" href="{% url 'tag_detail' 3 %}">Breakfast</a>
+          <a class="dropdown-item" href="{% url 'tag_detail' 4 %}">Lunch</a>
+          <a class="dropdown-item" href="{% url 'tag_detail' 1 %}">Dinner</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-primary" href="{% url 'frontend:index' %}">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+</header>

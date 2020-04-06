@@ -3,6 +3,341 @@
  * Copyright 2013-2019 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/LICENSE)
  */
-body {
-  padding-top: 25px;
+main {
+  background-color: #f5f5f5;
 }
+body{
+  background-color: #f5f5f5;
+}
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  nav{
+  	font-family: 'Montserrat', sans-serif;
+  	background-color: white !important;
+  }
+  .justify-content-md-center{
+  	margin-left:30%;
+  }
+
+  nav li{
+    margin-left: 1px;
+    margin-right: 1px;
+    font-size: 1.2rem;
+    color:#e70e02;
+  }
+  .nav-link{
+    color:#e70e02;
+  }
+  #head{
+    font-size: 1.2rem;
+    color: red;
+    margin-left:10px;
+  }
+  
+  /* Style homepage jumbotrons*/
+  #jumbo{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 4%;
+    height: 95vh;
+    position:relative;
+    margin-bottom: 0;
+    animation: fade 2s linear forwards;
+  }
+  @keyframes fade{
+    0%{ filter: sepia(0%);
+        filter: grayscale(0%); 
+      }
+    100%{ filter: sepia(60%);
+          filter: grayscale(60%); 
+      }
+  }
+  #jumbo-2{
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 8%;
+    height: 100vh;
+    position:relative;
+    margin-bottom: 0;
+    }
+  /* Styling for Category section*/
+  .album{
+  	background-color: #f5f5f5!important;
+  }
+  .album-header{
+  	padding: 8% 0 7% 0;
+  }
+  #cat-h-1{
+	color:#656E64!important;
+  }
+  #cat-h-2{
+  	color:#EB5201!important;
+  }
+/* Styling for Category cards*/
+.tag-card{
+	border-radius: 10px 10px 0 0 !important;
+}
+.tag-img{
+	border-radius: 10px 10px 0 0 !important;
+}
+  .tag-card-body{
+	text-align:center!important;
+  }
+  #tag-title{
+  	font-family:'Roboto', sans-serif;
+  	font-size: 1.5rem;
+  }
+  #tag-title a{
+  	color:#c50F05!important;
+  }
+
+/* Styling our favorites recipe section */
+.album-head-rec{
+	padding-top:8%;
+}
+.album-rec{
+	padding-bottom:15%;
+}
+  .rec-img{
+    object-fit: cover;
+  }
+  #rec-h-1{
+  	margin-left:5%;
+	color:#C50F0F;
+  }
+  #rec-h-2{
+	color:#E5dF26;
+  }
+  #author{
+  	text-align: center;
+    font-size:1rem;
+  }
+  
+  .rec-body {
+  	width:85%;
+  }
+  .rec-body a{
+	color:#484848!important;
+	font-size:1.3rem;
+  }
+  .rec-details{
+  	text-align: center;
+  }
+  .rec-desc{
+	text-align: center;
+	color:#c50F05!important;
+  }
+
+
+  /*ALL_RECIPES TEMPLATE STYLING*/
+   #pagination{
+      text-align: center;
+      margin-top:1em;
+    }
+    #pagination-action{
+      margin: 0 0 1em;
+      display: inline-block;
+      padding:.5em;
+      font-size:1.3em;
+    }
+
+    /* RECIPE DETAIL STYLING */
+    .feature-container{
+      
+      height:297px;width:450px
+    }
+    #featured {
+      border: 2px groove;
+      border-radius: 4px;
+      padding: 3px;
+      height: 100%;
+      width: 100%;
+    }
+   .ing-td,.ing-th{
+    font-size: .9rem;
+    padding: .5rem;
+    text-align:left;
+  }
+  .ing-th{
+    border-bottom: 1px solid black;
+  }
+  #big-row{
+    border-bottom: 1px dashed black;
+  }
+  .my-custom-scrollbar {
+    position:relative;
+    height: 300px;
+    overflow: auto;
+    display: block;
+  }
+  .tag-list{
+    width:70%;
+    display:inline-block;
+    position:relative;
+    height: 100px;  }
+  .recipe-stats{
+    clear:left; 
+    padding-top: 10px
+  }
+  @media screen and (max-width:768px){
+    .my-custom-scrollbar {
+    position:relative;
+    height: 300px;
+    overflow: auto;
+    display: block;
+    clear:left;
+    padding-top: 20px;
+    }
+  }
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+  /* Styling sortby_tags page*/
+  #tag-jumbo-img{
+    width:99vw; 
+    height:30vh; 
+    object-fit: cover;
+    filter:brightness(50%);
+  }
+  .tag-jumbo-title{
+    font-family: 'Crimson Text', serif;
+    position: absolute;
+    width:200px;
+    top: 30%;
+    left:50%;
+    transform: translate(-30%,0);
+    z-index:3;
+  }
+  .tag-rec-row{
+    opacity:0;
+    transform: translate(0,60px);
+  }
+  .tag-rec-img{
+    object-fit: cover;
+    height:60vh;
+    width:100%;
+  }
+  .tag-rec-title a{
+    font-family: 'Crimson Text', serif;
+    font-size: 1.8rem;
+    color:#505050;
+  }
+  .tag-rec-details p{
+    color:#656E64;
+  }
+ .tag-rec-body{
+  color:#c50F05!important;
+ }
+ .tag-rec-desc{
+  font-family: 'Work Sans', sans-serif;
+  font-size:1.1rem;
+  line-height:1.6;
+  text-align: left;
+ }
+ .tag-rec-btn{
+  padding:7px;
+  background-color: #EB5201;
+  color: white;
+ }
+ #tag-sidenav {
+  position: absolute;
+  z-index: 1;
+  top: 60%;
+  left: 82%;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+
+ #tag-sidenav.scrolled {
+  position: fixed;
+  z-index: 1;
+  top: 20%;
+  left: 82%;
+  background-color:transparent;
+  overflow-x: hidden;
+  padding: 8px 0;
+  transition:.5;
+  text-align: center;
+}
+ #detail-sidenav {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left:73%;
+  overflow-x: hidden;
+}
+
+#detail-sidenav.scrolled{
+  position: fixed;
+  z-index: 1;
+  top: 20%;
+  left: 73%;
+  background-color:transparent;
+  overflow-x: hidden;
+  transition:.5;
+  text-align: center;
+}
+#detail-sidenav.stick{
+  position: absolute;
+  top:475px;
+  left:73%;
+  overflow-x: hidden;
+}
+
+/* Styling for All_recipes page */
+  .sidenav{
+    background-color:transparent;
+  }
+  .sidenav h1,a{
+    text-align: center;
+  }
+  .sidenav h1{
+    font-family: 'Crimson Text', serif;
+    color:#EB5201;
+  }
+  .sidenav a,h5,h3{
+    color:#00a4c0;
+  }
+
+  #all-rec-body h5{
+    font-size: 1rem!important;
+    font-weight: 500;
+  }
+  #all-title{
+    font-family:'Crimson Text', serif;
+    font-weight:500;
+    font-size:5rem;
+  }
+  .carousel-caption{
+    width:50%;
+    height:45%;
+    background-color: rgba(0,0,0,.6);
+    margin-bottom: 6%;
+  }
+  .learn-more{
+    background-color:#EB5201;
+    color:white;
+    border-radius:0 0 0 0;
+  }
+
+  footer{
+    background-color: #4B515D;
+    color:white;
+  }
+  footer a{
+    color:#ff4444;
+  }

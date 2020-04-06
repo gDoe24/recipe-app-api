@@ -1,8 +1,10 @@
-import { GET_RECIPES, DELETE_RECIPE, ADD_RECIPE, GET_INGREDIENTS, ADD_INGREDIENT } from '../actions/types.js';
+import { GET_RECIPES, DELETE_RECIPE, ADD_RECIPE,
+ GET_INGREDIENTS, ADD_INGREDIENT, GET_TAGS} from '../actions/types.js';
 
 const initialState = {
 	recipes: ['Kobe'],
-	ingredients:['JellyBean']
+	ingredients:['JellyBean'],
+	tags:['Dinner']
 }
 
 export default function(state=initialState, action){
@@ -34,6 +36,11 @@ export default function(state=initialState, action){
 			return {
 				...state,
 				ingredients: [...state.ingredients, action.payload]
+			}
+		case GET_TAGS:
+			return {
+				...state,
+				tags:action.payload
 			}
 	}
 }

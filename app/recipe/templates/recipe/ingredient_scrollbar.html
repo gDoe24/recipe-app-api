@@ -1,0 +1,17 @@
+
+
+	
+	<div class="my-custom-scrollbar">
+		<table class ="table mb-0" style="">
+			<thead class="thead">
+				<tr scope="row">
+					<th class="ing-th">Ingredients</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for ingredient in ingredients %}
+				<tr id="big-row" scope="row"><td class="ing-td">{{ingredient.amount}} {{ingredient.unit}} {{ingredient.name}}</td></tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>

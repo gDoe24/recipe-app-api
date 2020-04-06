@@ -2,8 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getRecipes, deleteRecipe } from "../../actions/recipes.js";
-import Ingredients from "./Ingredients";
-import IngredientForm from "./IngredientForm"
+
 
 export class Recipes extends Component {
 	static propTypes = {
@@ -44,8 +43,6 @@ export class Recipes extends Component {
 					)}
 				</tbody>
 				</table>
-				<Ingredients />
-				<IngredientForm />
 			</Fragment>
 		)
 	}
