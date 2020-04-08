@@ -15,14 +15,14 @@ constructor(){
   super();
 
   this.state={
-    title: 'Kobe',
+    title: 'Chicken Penne',
     time: '2',
     price: '4',
     servings: '8',
-    ingredients: [166],
+    ingredients: [],
     tags:[],
-    description:'A dish best served cold',
-    methods:'Step 1: x\nStep 2: y',
+    description:'Tender pasta and chicken smothered in a creamy, garlicky white sauce – This Creamy Garlic Penne Pasta with Chicken is a delicious and easy meal for any night of the week',
+    methods:'Step 1: x\nStep 2: y\nStep 3: etc.',
     image: '',
     ingNames:" ",
   };

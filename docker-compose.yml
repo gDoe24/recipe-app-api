@@ -38,4 +38,4 @@ services:
     volumes:
       - static:/vol/web/static
     ports:
-      - 80:80
+      - 8080:80

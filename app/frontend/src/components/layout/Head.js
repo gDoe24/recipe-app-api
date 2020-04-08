@@ -19,8 +19,6 @@ export class Head extends Component{
                 <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Work+Sans:400,700" rel="stylesheet"></link>
                 <link href="https://fonts.googleapis.com/css?family=Cookie&display=swap" rel="stylesheet"></link>
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/solid.min.js" rel="stylesheet"></link>
-                
-                <link href="album.css" rel="stylesheet"></link>
             </head>
             </Fragment>
         )
