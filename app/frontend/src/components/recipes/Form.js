@@ -20,7 +20,7 @@ constructor(){
     price: '4',
     servings: '8',
     ingredients: [],
-    tags:[],
+    tags:[0],
     description:'Tender pasta and chicken smothered in a creamy, garlicky white sauce – This Creamy Garlic Penne Pasta with Chicken is a delicious and easy meal for any night of the week',
     methods:'Step 1: x\nStep 2: y\nStep 3: etc.',
     image: '',

@@ -2,7 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+app/app/local_settings.py
+app/debug.log
 # C extensions
 *.so
 
