@@ -1,4 +1,6 @@
 FROM python:3.7-alpine
+
+
 MAINTAINER greg
 
 ENV PYTHONPATH="C:\\Users\\425823\\Django_projects\\myvenv\\Scripts\\python37.zip"
@@ -23,3 +25,5 @@ RUN adduser -D user
 RUN chown -R user:user /vol/
 RUN chmod -R 755 /vol/web
 USER root
+
+CMD ["gunicorn", "app.wsgi", "-b 0.0.0.0:8000"]

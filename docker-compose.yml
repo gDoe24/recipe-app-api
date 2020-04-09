@@ -1,17 +1,21 @@
 version: "3"
 
+volumes:
+  static:
 services:
   app:
     build:
       context: .
+      dockerfile: docker/Dockerfile
     ports:
       - "8000:8000"
     volumes:
       - ./app:/app
+      - static:/vol/web/static
     command: >
       sh -c "python manage.py wait_for_db && 
              python manage.py migrate &&
-             python manage.py runserver 0.0.0.0:8000"
+             gunicorn -w 4 app.wsgi -b 0.0.0.0:8000"
     environment:
       - "DB_HOST=db"
       - "DB_NAME=app"
@@ -26,4 +30,17 @@ services:
       - "POSTGRES_DB=app"
       - "POSTGRES_USER=postgres"
       - "POSTGRES_PASSWORD=supersecretpassword"
-
+  react:
+    build:
+      context: .
+      dockerfile: docker/react/Dockerfile
+    ports:
+      - 3001:3000
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    volumes:
+      - static:/vol/web/static
+    ports:
+      - 80:80

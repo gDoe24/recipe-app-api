@@ -261,7 +261,7 @@ body{
   padding: 8px 0;
 }
 
-
+/*Side nave bar for Tag page*/
  #tag-sidenav.scrolled {
   position: fixed;
   z-index: 1;
@@ -340,4 +340,8 @@ body{
   }
   footer a{
     color:#ff4444;
+  }
+
+  .form-container{
+    background-color: red;
   }
