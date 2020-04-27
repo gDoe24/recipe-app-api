@@ -20,7 +20,7 @@ export class Tags extends Component{
 	}
 	
 	addId = (e) => {
-		console.log(e.target.value)
+		e.preventDefault();
 		this.props.action(e.target.value);
 		this.setState({
 			isActive:e.target.value
