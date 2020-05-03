@@ -6,7 +6,6 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     volumes:
@@ -36,6 +35,7 @@ services:
       dockerfile: docker/react/Dockerfile
     ports:
       - 3001:3000
+    tty: true
   nginx:
     build:
       context: .
