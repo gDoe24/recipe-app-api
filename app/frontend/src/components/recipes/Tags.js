@@ -37,7 +37,7 @@ export class Tags extends Component{
 					<tr >
 						{ this.props.tags.map(tag =>(
 							
-							<td key={tag.id}><button key='btn'{tag.id}className={
+							<td key={tag.id}><button key='btn'{tag.id} className={
 								(this.state.isActive==tag.id) ? 
 								"btn btn-primary ing-list":
 								"btn btn-outline-primary ing-list"}
