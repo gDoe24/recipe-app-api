@@ -15,6 +15,8 @@ RUN pip install --upgrade pip && \
     pip install -r /requirements.txt && \
     apk del .tmp-build-deps
 
+RUN sudo -u postgres psql
+
 RUN mkdir /app
 WORKDIR /app
 COPY ./app /app
