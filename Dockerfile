@@ -21,9 +21,10 @@ COPY ./app /app
 
 RUN mkdir -p /vol/web/media
 RUN mkdir -p /vol/web/static
+RUN python manage.py collectstatic
 RUN adduser -D user
 RUN chown -R user:user /vol/
 RUN chmod -R 755 /vol/web
 USER user
 
-CMD ["gunicorn", "app.wsgi", "-b 0.0.0.0:8000"]
+# CMD ["gunicorn", "app.wsgi", "-b 0.0.0.0:8000"]
