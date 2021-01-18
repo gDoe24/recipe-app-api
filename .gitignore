@@ -8,6 +8,7 @@ app/debug.log
 *.so
 
 # Distribution / packaging
+app/frontend/node_modules
 node_modules
 cors.py
 .Python

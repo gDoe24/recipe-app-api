@@ -56,12 +56,12 @@ class LogoutView(APIView):
 			logout(request)
 
 			return Response({"success": _("Successfully logged out.")},
-							status=status.HTTP_200_OK)
+							status = status.HTTP_200_OK)
 	
 #Login API
 class LoginAPI(generics.GenericAPIView):
 
-	serializer_class=UserSerializer
+	serializer_class = UserSerializer
 	authentication_classes = (authentication.TokenAuthentication,)
 	permission_classes = (permissions.IsAuthenticated,)
 
@@ -77,7 +77,7 @@ class LoginAPI(generics.GenericAPIView):
 			})
 
 def home(request):
-	tag=Tag.objects.all()
+	tag = Tag.objects.all()
 	recipe_list = Recipe.objects.all().order_by('-creation_date')
 
 	paginator = Paginator(recipe_list, 3)
