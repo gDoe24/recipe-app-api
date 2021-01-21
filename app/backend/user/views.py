@@ -84,5 +84,5 @@ def home(request):
 	page = request.GET.get('page')
 	recipe = paginator.page(1)
 
-	return render(request, 'user/home.html', {'recipes':recipe, 'tags':tag})
+	return render(request, 'frontend/base/home.html', {'recipes':recipe, 'tags':tag})
 

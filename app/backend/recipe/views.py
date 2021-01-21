@@ -110,7 +110,7 @@ def detail(request,recipe_id):
 	recipe = get_object_or_404(Recipe, pk=recipe_id)
 	tag=Tag.objects.all()
 	ingredient=Ingredient.objects.filter(recipe=recipe_id)
-	return render(request, 'recipe/detail.html', {'recipe':recipe, 'tags':tag, 'ingredients':ingredient})
+	return render(request, 'frontend/recipes/detail.html', {'recipe':recipe, 'tags':tag, 'ingredients':ingredient})
 
 def all_recipes(request):
 	recipe_list=Recipe.objects.all()
@@ -121,12 +121,12 @@ def all_recipes(request):
 	page = request.GET.get('page',1)
 	recipe = paginator.get_page(page)
 
-	return render(request, 'recipe/all_recipes.html',{'recipes':recipe, 'tags':tag, 'ingredients':ingredient})
+	return render(request, 'frontend/recipes/all_recipes.html',{'recipes':recipe, 'tags':tag, 'ingredients':ingredient})
 
 def tag_detail(request,tag_id):
 
 	tag = get_object_or_404(Tag, pk=tag_id)
 	tags = Tag.objects.all()
 	recipe = Recipe.objects.filter(tags=tag_id)
-	return render(request, 'recipe/tag_detail.html',{'tag':tag,'recipes':recipe,'tags':tags})
+	return render(request, 'frontend/recipes/tag_detail.html',{'tag':tag,'recipes':recipe,'tags':tags})
 
