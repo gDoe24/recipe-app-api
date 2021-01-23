@@ -23,8 +23,8 @@ import user.views, recipe.views, frontend.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/user/', include('user.urls')),
-    path('api/recipe/', include('recipe.urls')),
+    path('api/user/', include('backend.user.urls')),
+    path('api/recipe/', include('backend.recipe.urls')),
     path('',include('frontend.urls')),
     # path('', user.views.home, name='home'),
     # path('all_recipes/', recipe.views.all_recipes, name="all_recipes"),

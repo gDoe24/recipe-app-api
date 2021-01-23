@@ -14,7 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+print(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -54,6 +54,7 @@ LOGGING = {
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -65,10 +66,10 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_extensions',
     'rest_framework.authtoken',
-    'backend.core',
-    'backend.user',
-    'backend.recipe',
-    'frontend',
+    '/backend/core',
+    '/backend/user',
+    '/backend/recipe',
+    '/frontend',
 ]
 
 MIDDLEWARE = [
