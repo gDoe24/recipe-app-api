@@ -66,10 +66,10 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_extensions',
     'rest_framework.authtoken',
-    '/backend/core',
-    '/backend/user',
-    '/backend/recipe',
-    '/frontend',
+    'backend.core',
+    'backend.user',
+    'backend.recipe',
+    'frontend',
 ]
 
 MIDDLEWARE = [

@@ -1,6 +1,6 @@
 from django.urls import path, include
 
-from user import views
+from . import views
 #from knox import views as knox_views
 
 app_name='user'

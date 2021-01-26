@@ -6,9 +6,9 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser
 
-from core.models import Tag, Ingredient, Recipe
+from backend.core.models import Tag, Ingredient, Recipe
 
-from recipe import serializers
+from . import serializers
 
 from django.shortcuts import render, get_object_or_404
 

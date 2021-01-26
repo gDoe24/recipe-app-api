@@ -1,16 +1,16 @@
-from rest_framework import generics, authentication, permissions
+from rest_framework import generics, authentication, permissions, status
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.settings import api_settings
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework.views import APIView
-from core.models import Recipe, Tag
+from backend.core.models import Recipe, Tag
 from django.views.generic import TemplateView
 from django.core.paginator import Paginator
 
 from django.shortcuts import render, get_object_or_404, redirect
 
-from user.serializers import UserSerializer, AuthTokenSerializer, LoginSerializer
+from .serializers import UserSerializer, AuthTokenSerializer, LoginSerializer
 
 from django.contrib.auth import logout as django_logout
 import json
@@ -55,7 +55,7 @@ class LogoutView(APIView):
 
 			logout(request)
 
-			return Response({"success": _("Successfully logged out.")},
+			return Response({"success": "Successfully logged out."},
 							status = status.HTTP_200_OK)
 	
 #Login API

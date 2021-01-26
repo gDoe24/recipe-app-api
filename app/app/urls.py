@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf.urls import url
 from django.conf.urls.static import static
 from django.conf import settings
-import user.views, recipe.views, frontend.views
+import backend.user.views, backend.recipe.views, frontend.views
 
 
 urlpatterns = [
